@@ -1,0 +1,45 @@
+<div id="topbar">
+  <div id="title">授课详情</div>
+  <div id="leftbutton">
+    <%= link_to '返回', offers_path %>
+  </div>
+</div>
+ 
+<div id="content">
+  
+  <span class="graytitle">授课编号:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @offer.identifier %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程名称:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">授课教师:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @teacher_info.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">授课地址:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @offer.address %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">授课时间:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @offer.begin %>--<%= @offer.end %></span>
+    </li>
+  </ul>
+</div>
+

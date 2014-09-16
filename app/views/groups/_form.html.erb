@@ -1,0 +1,52 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div>
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">群组编号:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :identifier, :size => 20, "placeholder" => "Group identifier", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">群组名称:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :name, :size => 20, "placeholder" => "Group name", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">群组类型:</span>
+  <ul class="pageitem">
+    <li class="select">
+      <%= select_tag(:kind, options_for_select([['班级', 'class'], ['课程', 'course']])) %>
+      <span class="arrow"></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">群组简介:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :intro, :cols => 3, :rows => 6, "placeholder" => "Group intro", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">群组标签:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :tag, :cols => 3, :rows => 6, "placeholder" => "Group tag", "type" => "text" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>

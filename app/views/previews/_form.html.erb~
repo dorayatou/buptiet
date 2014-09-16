@@ -1,0 +1,15 @@
+<%= form_for(@preview, :url => { :action => "create" }) do |f| %>
+ 
+<span class="graytitle">ID:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+		<%= f.text_area :body, :size => "60x12" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>
+

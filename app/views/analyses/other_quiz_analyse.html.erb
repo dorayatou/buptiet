@@ -1,0 +1,35 @@
+<div id="topbar">
+  <div id="title"><%= @select_quiz.name %></div>
+  <div id="leftnav">
+    <%= link_to '首页', students_path %><%= link_to '返回', student_other_course_quiz_path(@select_course) %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+    <% if @select_quiz.name == "找一找" %>
+      <%= render 'finding_tone_scores' %>
+    <% elsif @select_quiz.name == "玩一玩" %>
+      <%= render 'playing_tone_scores' %>
+    <% elsif @select_quiz.name == "练一练" %>
+      <%= render 'practice_tone_scores' %>
+    <% elsif @select_quiz.name == "儿童智力测试量表" %>
+      <%= render 'iqtests' %>
+    <% elsif @select_quiz.name == "图形操作" %>
+      <%= render 'image_courses' %>
+    <% elsif @select_quiz.name == "报告记录" %>
+      <%= render 'reports' %>
+    <% else %>
+      <span class="graytitle">暂无上传结果可查看</span>
+    <% end %>
+ 
+
+</div>

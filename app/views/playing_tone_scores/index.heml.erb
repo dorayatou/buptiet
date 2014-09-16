@@ -1,0 +1,73 @@
+<div id="topbar">
+  <div id="title"><%= @current_quiz.name %>日志</div>
+  <div id="leftnav">
+    <%= link_to '问题墙', index_teacher_problems_path %><%= link_to '返回', teacher_quiz_path(@current_quiz) %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "问题列表", teacher_show_quiz_path(@current_course, @current_quiz), :method => :get %><%= link_to "结果统计", playing_tone_scores_path(@current_course, @current_quiz), :method => :get, :id => "pressed" %>
+  </div>
+</div>
+
+<div id="content">
+<center>
+<table class="datalist">
+	
+	<th scope="col">目标拼音</th>
+	<th scope="col">选择拼音</th>
+	<th scope="col">答题结果</th>
+	<th scope="col">答题用时</th>
+
+	<% @datas.each do |data| %>
+		<tr class="<%= cycle('list_line_even','list_line_odd') %>">
+			
+			<td><%= data.target_tone_char %></td>
+			<td><%= data.selected_tone_char %></td>
+			<td><%= data.correct %></td>
+			<td><%= data.consume_time %></td>
+			
+		</tr>
+	<% end %>
+</table>
+</center>
+</div>
+
+<style>  
+<!--  
+.datalist{  
+    border:1px solid #0058a3;   /* 表格边框 */  
+    font-family:Arial;  
+    border-collapse:collapse;   /* 边框重叠 */  
+    background-color:#eaf5ff;   /* 表格背景色 */  
+    font-size:14px;  
+}  
+.datalist caption{  
+    padding-bottom:5px;  
+    font:bold 1.4em;  
+    text-align:left;  
+}  
+.datalist th{  
+    border:1px solid #0058a3;   /* 行名称边框 */  
+    background-color:#4bacff;   /* 行名称背景色 */  
+    color:#FFFFFF;              /* 行名称颜色 */  
+    font-weight:bold;  
+    padding-top:4px; padding-bottom:4px;  
+    padding-left:12px; padding-right:12px;  
+    text-align:center;  
+}  
+.datalist td{  
+    border:1px solid #0058a3;   /* 单元格边框 */  
+    text-align:left;  
+    padding-top:4px; padding-bottom:4px;  
+    padding-left:10px; padding-right:10px;  
+}  
+.datalist tr.list_line_odd{  
+    background-color:#c7e5ff;   /* 隔行变色 */  
+}  
+.datalist tr.list_line_even {
+	;
+}
+-->  
+</style> 

@@ -1,0 +1,42 @@
+<div id="topbar">
+	<div id="title">授课管理</div>
+	<div id="leftnav">
+		<%= link_to '返回', show_all_courses_admins_path %>
+	</div>
+</div>
+
+<div id="tributton">
+  <div class="links">
+    <%= link_to "课程管理", courses_path %><%= link_to "授课管理", offers_path, :id => "pressed" %><%= link_to "选课管理", selects_path %>
+  </div>
+</div>
+
+<div id="content">
+	<span class="graytitle">授课列表：</span>
+	<table>
+		<% @offers.each do |offer| %>
+			<tr>
+				<td>
+					<%= offer.identifier %>
+				</td>
+				<td>
+					<%= offer.course.name %>
+				</td>
+				<td>
+					<%= offer.teacher.teacher_info.name %>
+				</td>
+				<td>
+					<%= offer.address %>
+				</td>
+				<td>
+					<%= offer.begin %> -- <%= offer.end %>
+				</td>
+				<td>
+				<%= link_to '详情', offer_path(offer) %> | <%= link_to '编辑', edit_offer_path(offer) %> | <%= link_to '删除', offer_path(offer), :method => :delete, :confirm => 'Are you sure?' %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<br />
+	<h1 style="float:right;position:relative;right:20px;text-decoration: underline;"><%= link_to '新添', new_offer_path %></h1>
+</div>

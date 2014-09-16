@@ -1,0 +1,19 @@
+<div id="topbar">
+  <div id="title">新添选项</div>
+  <div id="leftnav">
+    <%= link_to '完成', course_quiz_question_path(@current_course.id, @current_quiz.id, @question.id), :method => :get %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render 'form' %>
+
+</div>

@@ -1,0 +1,21 @@
+<div id="topbar">
+  <div id="title">新添学院</div>
+  <div id="leftbutton">
+    <%= link_to '返回', academies_path %>
+  </div>
+</div>
+ 
+<div id="content">
+	<% if notice %>
+    	<div>
+      		<ul>
+        		<li><%= notice %></li>
+      		</ul>
+    	</div>
+  	<% end %>
+  	
+  <%= render 'form' %>
+</div>
+
+
+

@@ -1,0 +1,31 @@
+<div id="topbar">
+  <div id="title">新添微博</div>
+  <div id="leftnav">
+    <% if session[:teacher_id] %>
+      <%= link_to '返回', group_posts_path(@group) %>
+    <% elsif session[:student_id] %>
+      <%= link_to '返回', student_posts_path(@group) %>
+    <% end %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= render 'form' %>
+</div>
+
+
+
+
+
+
+
+
+
+

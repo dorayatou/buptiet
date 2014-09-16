@@ -1,0 +1,61 @@
+<div id="topbar">
+  <div id="title">泛在学习</div>
+  <div id="leftbutton">
+    <%= link_to '登出', logout_path, :method => :delete %>
+  </div>
+</div>
+
+<div id="content">
+	<span class="graytitle">功能列表</span>
+  <ul class="pageitem">
+    <li class="menu">
+      <a href="/admins/show_all_admins">
+        <img alt="Setting" src="/assets/setting.png" />
+        <span class="name">系统管理</span>
+        <span class="arrow"></span>
+      </a>
+    </li>
+
+    <li class="menu">
+      <a href="/admins/show_all_users">
+        <img alt="User" src="/assets/user.png" />
+        <span class="name">用户管理</span>
+        <span class="arrow"></span>
+      </a>
+    </li>
+
+    <li class="menu">
+      <a href="/admins/show_all_courses">
+        <img alt="Document" src="/assets/document.png" />
+        <span class="name">课程管理</span>
+        <span class="arrow"></span>
+      </a>
+    </li>
+
+    <li class="menu">
+      <a href="/admins/show_all_quizzes" data-method="get">
+        <img alt="Class" src="/assets/class.png" />
+        <span class="name">题库管理</span>
+        <span class="arrow"></span>
+      </a>
+    </li>
+
+    <li class="menu">
+      <a href="/admins/show_course_times" data-method="get">
+        <img alt="Class" src="/assets/class.png" />
+        <span class="name">课表管理</span>
+        <span class="arrow"></span>
+      </a>
+		</li>
+
+		<li class="menu">
+      <a href="/admins/show_previews" data-method="get">
+        <img alt="Class" src="/assets/class.png" />
+        <span class="name">预习材料</span>
+        <span class="arrow"></span>
+      </a>
+    </li>
+
+  </ul>
+
+</div>

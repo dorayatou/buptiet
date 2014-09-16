@@ -1,0 +1,18 @@
+<div id="topbar">
+  <div id="title"><%= @course.name %>--课表</div>
+  <div id="leftbutton">
+    <%= link_to '返回', course_course_times_path(@course.id) %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= render 'form' %>
+</div>

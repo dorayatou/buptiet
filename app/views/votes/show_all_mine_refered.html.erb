@@ -1,0 +1,30 @@
+<div id="topbar">
+  <div id="title">投票系统</div>
+  <div id="leftnav">
+    <%= link_to '返回', votes_path %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">我参与的投票</span>
+  <ul class="pageitem">
+    <% @votes.each do |vote| %>
+    <li class="menu">
+      <span class="name" style="width:280;"><%= vote.topic.body %></span>
+      <span><%= link_to "", show_my_refered_vote_path(vote.topic) %></span>
+      <span class="arrow"></span>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+

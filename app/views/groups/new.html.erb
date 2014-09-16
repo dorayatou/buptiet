@@ -1,0 +1,17 @@
+<div id="topbar">
+  <div id="title">新添群组</div>
+  <div id="leftnav">
+    <%= link_to '返回', groups_path, :method => :get %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= render 'form' %>
+</div>

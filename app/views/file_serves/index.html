@@ -1,0 +1,23 @@
+<div id="topbar">
+	<div id="title">资源共享</div>
+	<div id="leftnav">
+		<%= link_to '问题墙', index_student_problems_path %>
+	</div>
+	<div id="rightbutton">
+		<%= link_to '新建' %>
+	</div>
+</div>
+
+<div id="content">
+	<span class="graytitle">资源列表</span>
+	<ul class="pageitem">
+	  <% @searchs.each do |search| %>
+	    <li class="menu">
+	      <span class="name"><%= search.title %></span>
+	      <!-- <a>标签中target无法打开新窗口 -->
+	      <span><a href="<%= search.file_url %>" target="view_window"> </a></span>
+	      <span class="arrow"></span>
+	    </li>
+	  <% end %>
+	</ul>
+</div>

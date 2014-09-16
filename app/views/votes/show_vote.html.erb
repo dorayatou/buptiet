@@ -1,0 +1,86 @@
+<div id="topbar">
+  <div id="title">投票系统</div>
+  <div id="leftnav">
+    <%= link_to '返回', votes_path %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">投票</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="graytitle">
+        <span class="name"><%= @topic.body %></span>
+      </span>
+    </li>
+  </ul>
+  <% if @check_vote.nil? %>
+    <%= form_tag({:controller => "votes", :action => "cast_vote"}) do %>
+      
+      <%= hidden_field_tag :topic_id, @topic.id %>
+
+      <span class=" graytitle">选项</span>
+      <ul class="pageitem">
+        <% i = 0 %>
+        <% @opinions.each do |opinion| %>
+          <li class="checkbox" >
+            <%= radio_button_tag 'opinion_id', opinion.id %>
+            <p>
+              <span class="graytitle">
+                <%= @opinion_all_tags[i] %>. <%= opinion.body %>
+              </span>
+            </p>
+          </li>
+          <% i = i + 1 %>
+        <% end %> 
+      </ul>
+      <ul class="pageitem">
+        <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+      </ul>
+    <% end %>
+  <% else %>
+    <hr style="border:1px #000000;" />
+    <span class="graytitle">投票结果：</span>
+    <div class = "image_center">
+      <img src="<%= @vote_results %>" alt="投票结果" />
+    </div>
+    <br/>
+    <span class="graytitle">选项</span>
+    <% j = 0 %>
+    <% @opinions.each do |opinion| %>
+      <ul class="pageitem">
+        <li class="textbox">
+          <span class="name">
+            <span class="graytitle">
+              <% if opinion.id == @check_vote.opinion_id %>
+                <%= @opinion_all_tags[j] %>. <%= opinion.body.to_s + "(我的选择)" %>
+              <% else %>
+                <%= @opinion_all_tags[j] %>. <%= opinion.body %>
+              <% end %>
+            </span>
+          </span>
+          <% if @topic.cast_count == 0 %>
+            <span class="name" style="float:right">
+              <%= 0.0 %>%
+            </span>
+          <% else %>
+            <span class="name" style="float:right">
+              <%= format("%.1f" ,(opinion.select_count.to_f/@topic.cast_count.to_f)*100) %>%
+            </span>
+          <% end %>
+        </li>
+        <% j = j + 1 %>
+      </ul>
+    <% end %>
+  <% end %>
+  
+</div>

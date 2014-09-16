@@ -1,0 +1,32 @@
+<div id="topbar">
+  <div id="title">随堂练习</div>
+  <div id="leftnav">
+    <%= link_to "返回", index_teacher_problems_path %>
+  </div>
+</div>
+
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">练习列表</span>
+  <ul class="pageitem">
+    <% @quizzes.each do |quiz| %>
+      <li class="menu">
+        <span class="name"><%= quiz.name %></span>
+        <span>
+          <%= link_to "", teacher_show_quiz_path(@current_course, quiz) %>
+        </span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
+
+

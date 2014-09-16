@@ -1,0 +1,34 @@
+<%= form_for(@option, :url => { :action => "create" }) do |f| %>
+
+  <% if @option.errors.any? %>
+    <div>
+      <ul>
+      <% @option.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">选项:</span>
+ 
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :body, "placeholder" => "Option", "type" => "text" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.select :correct, options_for_select([['Correct', true], ['Uncorrect', false]]), "type" => "select" %>
+    </li>
+  </ul>
+  
+
+  <ul class="pageitem">
+    <li class="button">
+      <%= submit_tag "确定", "type" => "submit" %>
+    </li>
+  </ul>
+
+<% end %>

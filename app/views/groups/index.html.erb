@@ -1,0 +1,55 @@
+<div id="topbar">
+  <div id="title">群组讨论</div>
+  <div id="leftnav">
+    <%= link_to '返回', teachers_path, :method => :get %>
+  </div>
+  <div id="rightnav">
+  	<%= link_to '新添', new_group_path, :method => :get %>
+  </div>
+</div>
+ 
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  	<% if not @current_group.nil? %>
+	  <span class="graytitle">当前课程群组</span>
+	  <ul class="pageitem">
+	  	<li class="menu">
+	  		<span class="name"><%= @current_group.name %></span>
+	  		<span><%= link_to "", group_posts_path(@current_group) %></span>
+	  		<span class="arrow"></span>
+	  	</li>
+	  </ul>
+	<% else %>
+		<span class="graytitle">我的课程群组</span>
+	  	<ul class="pageitem">
+	  		<% @course_groups.each do |group| %>
+	  			<li class="menu">
+	  				<span class="name"><%= course_group.name %></span>
+	  				<span><%= link_to "", group_posts_path(course_group) %></span>
+	  				<span class="arrow"></span>
+	  			</li>
+	  		<% end %>
+	  	</ul>
+	<% end %>
+
+	<span class="graytitle">我的班级群组</span>
+	  	<ul class="pageitem">
+	  		<% @class_groups.each do |class_group| %>
+	  			<li class="menu">
+	  				<span class="name"><%= class_group.name %></span>
+	  				<span><%= link_to "", group_posts_path(class_group) %></span>
+	  				<span class="arrow"></span>
+	  			</li>
+	  		<% end %>
+	  	</ul>
+</div>
+
+

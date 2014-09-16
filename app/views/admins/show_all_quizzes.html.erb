@@ -1,0 +1,21 @@
+<div id="topbar">
+	<div id="title">题库管理</div>
+	<div id="leftbutton">
+		<%= link_to '返回', admins_path %>
+	</div>
+</div>
+
+<div id="content">
+
+    <span class="graytitle">课程列表</span>
+ 	<ul class="pageitem">
+      	<% @courses.each do |course| %>
+	        <li class="menu">
+		  		<span class="name"><%= course.name %></span>
+		  		<span><%= link_to "", course_quizzes_path(course) %></span>
+		  		<span class="arrow"></span>
+		  	</li>
+      	<% end %> 
+  	</ul>
+
+</div>

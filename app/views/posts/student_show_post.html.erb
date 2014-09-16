@@ -1,0 +1,68 @@
+<div id="topbar">
+  <div id="title">消息详情</div>
+  <div id="leftnav">
+    <%= link_to '返回', student_posts_path(@group) %>
+  </div>
+</div>
+
+<div id="content">
+
+  <div id="postcomment">
+    <div id="postimage">
+      <%= image_tag("user.png") %>
+    </div>
+
+    <div id="postcomment">
+      <ul class="pageitem1">
+        <li class="textbox">
+          <span style="color:red;">
+            <% if not @teacher_info.nil? %>
+              <%= @teacher_info.name %>: 
+            <% elsif not @student_info.nil? %>
+              <%= @student_info.name %>: 
+            <% end %>
+          </span>
+          <p class="postbody">
+            <%= @post.body %>
+          </p>
+          <br />
+          <p class="postcommentlink">
+            <%= link_to '评论', new_student_comment_path(@group, @post), :method => :get %> 
+            <% if  @post.student_id and @post.student_id == session[:student_id] %>
+              | <%= link_to '删除',destroy_student_post_path(@group, @post), :method => :delete, :confirm => 'Are you sure?' %>
+            <% end %>
+          </p>
+        </li>
+
+
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <li class="textbox">
+              <span class="commentname">
+                <% if not comment.teacher_id.nil? %>
+                  <%= comment.teacher.teacher_info.name %>:
+                <% else %>
+                  <%= comment.student.student_info.name %>:
+                <% end %>
+                <span class="commentbody"><%= comment.body %></span>
+              </span>
+              <br />
+              <p class="postcommentlink">
+                <% if comment.teacher_id and comment.teacher_id == session[:teacher_id] %>
+                  <%= link_to '回复', new_group_post_comment_path(@group, @post), :method => :get %> | <%= link_to '删除', group_post_comment_path(@group, @post, comment), :confirm => 'Are you sure?', :method => :delete %>
+                <% elsif comment.student_id and comment.student_id == session[:student_id] %>
+                  <%= link_to '回复' %> | <%= link_to '删除',destroy_comment_path(@group, @post, comment), :method => :delete, :confirm => 'Are you sure?' %>
+                <% end %>
+              </p>
+            </li>
+          <% end %>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+
+

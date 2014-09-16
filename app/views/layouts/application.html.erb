@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+  <title>Buptiet</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style>
+  	.image_center{
+        text-align: left;
+        width: 800px;
+        height: 180px;
+        margin: 10px auto auto 20px;
+    }     
+  </style>
+</head>
+<body>
+
+
+
+<%= yield %>
+
+<div id="footer">Copyright 2013 BUPT. All rights reserved.</div>
+</body>
+</html>

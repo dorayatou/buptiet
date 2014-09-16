@@ -1,0 +1,89 @@
+<div id="topbar">
+  <div id="title">泛在学习</div>
+  <div id="leftnav">
+    <%= link_to '登出', logout_path, method: :delete %>
+  </div>
+  <div id="rightnav">
+    <%= link_to "个人信息", @teacher, method: :get %>
+  </div>
+</div>
+
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- 课程部分 -->
+  <span class="graytitle">课程信息</span>
+  <% if @course %>
+  <ul class="pageitem">
+
+    <li class="textbox">
+      <span class="graytitle" style="margin:10px 25% 10px 25%;">
+        <%= @course.name %> 
+      </span>
+    </li>
+
+    <li class="menu">
+        <span class="name" style="margin:10px 38% 10px 38%;">进入课堂</span>
+        <span><%= link_to "", index_teacher_problems_path %></span>
+        <span class="arrow"></span>
+    </li>
+
+    <li class="menu">
+        <span class="name" style="margin:10px 38% 10px 38%;">进入群组</span>
+        <span><%= link_to "", groups_path %></span>
+        <span class="arrow"></span>
+    </li>
+  </ul>
+  <!-- <span class="graytitle">
+      <a href="">
+        <span class="name" style="float:right;position:relative;right:20px;text-decoration: underline;">更多课程</span>
+      </a>
+  </span> -->
+  <% else %>
+    <ul class="pageitem">
+      <li class="textbox">
+        <ul>
+          <span class="graytitle">没有正在进行的课程</span>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+  <br/>
+  
+
+  <!-- 最新消息部分 -->
+  <span class="graytitle">最新消息</span>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+      <% if post.student_id %>
+        <ul class="pageitem"> 
+            <li class="store">        
+                <span class="comment">发信人：    <%= post.student.student_info.name %></span>
+                <span class="name" style="width:280px"><%= post.title %></span>
+                <span><%= link_to "", show_message_path(post) %></span>
+                <span class="image"><%= image_tag("default_face.png") %></span>
+                <span class="starcomment"><%= post.created_at %></span>
+                <span class="arrow"></span>
+            </li> 
+          </ul>
+        <% end %>
+      <% end %>
+  <% else %>
+    <span>暂无消息</span>
+  <% end %> 
+  <span class="graytitle">
+    <a href="/messages/student_all_post_messages">
+      <span class="name" style="float:right;position:relative;right:20px;text-decoration: underline;">更多内容</span>
+    </a>
+  </span>
+  <br/>
+</div>
+
+
+

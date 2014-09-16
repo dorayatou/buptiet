@@ -1,0 +1,25 @@
+<div id="topbar">
+  <div id="title">投票系统</div>
+  <div id="leftnav">
+    <%= link_to "返回", topics_path %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新投票', new_topic_path, :method => :get %>
+  </div>
+</div>
+
+<div id="content">
+
+  <span class="graytitle">全部投票</span>
+  <ul class="pageitem">
+    <% @topics.each do |topic| %>
+    <li class="menu">
+      <span class="name" style="width:280;"><%= topic.body %></span>
+      <span><%= link_to "", topic %></span>
+      <span class="arrow"></span>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+

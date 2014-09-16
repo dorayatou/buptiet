@@ -1,0 +1,32 @@
+<div id="topbar">
+	<div id="title">泛在学习</div>
+</div>
+
+<div id="content">
+	<% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  	<% end %>
+  	<%= form_tag do %>
+		<span class="graytitle">用户名:</span>
+		<ul class="pageitem">
+			<li class="bigfield">
+				<%= text_field_tag :identifier, params[:identifier], "placeholder" => "Username", "type" => "text" %>
+			</li>
+		</ul>
+		<span class="graytitle">密码:</span>
+		<ul class="pageitem">
+			<li class="bigfield">
+				<%= password_field_tag :password, params[:password], "placeholder" => "Password", "type" => "password"%>
+			</li>
+		</ul>
+		<ul class="pageitem">
+			<li class="button"><%= submit_tag "登陆", "type" => "submit" %></li>
+		</ul>
+  	<% end %>
+
+</div>
+

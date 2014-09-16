@@ -1,0 +1,38 @@
+<div id="topbar">
+  <div id="title"><%= @current_quiz.name %></div>
+  <div id="leftnav">
+    <%= link_to '主页', admins_path %><%= link_to '返回', course_quizzes_path(@current_course) %>
+  </div>
+    <div id="rightnav">
+    <%= link_to '新添问题', new_course_quiz_question_path(@current_course, @current_quiz), :method => :get %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">问题列表</span>
+  <ul class="pageitem">
+    <% @questions.each do |question| %>
+      <li class="menu">
+        <span class="name"><%= question.body %></span>
+        <span>
+          <%= link_to "", course_quiz_question_path(@current_course, @current_quiz, question) %>
+        </span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  </ul>
+  <br />
+  <br />
+  <h1 style="float:right;position:relative;right:20px;text-decoration: underline;">
+    <%= link_to '新添问题', new_course_quiz_question_path(@current_course, @current_quiz), :method => :get %>
+  </h1>
+</div>

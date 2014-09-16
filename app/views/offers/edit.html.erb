@@ -1,0 +1,20 @@
+<div id="topbar">
+  <div id="title">编辑信息</div>
+  
+  <div id="leftbutton">
+    <%= link_to '返回', offers_path %>
+  </div>
+
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= render 'form' %>
+</div>
+

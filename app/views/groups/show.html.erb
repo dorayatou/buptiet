@@ -1,0 +1,70 @@
+<div id="topbar">
+  <div id="title">群组详情</div>
+  <div id="leftnav">
+    <%= link_to '返回', groups_path, :method => :get %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '群属性' %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "全部消息" %><%= link_to "群组管理" %>
+  </div>
+</div>
+ 
+<div id="content">
+
+	<% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <span class="graytitle">群组名称:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @group.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">类型:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @group.kind %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">属性:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+        <span class="name"></span>
+
+        <span class="name"></span>
+      
+    </li>
+  </ul>
+
+  <span class="graytitle">群组标签</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @group.tag %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">群组成员管理</span>
+  <ul class="pageitem">
+    <li class="menu">
+      <span class="name">成员列表</span>
+      <span><%= link_to "" %></span>
+      <span class="arrow"></span>
+    </li>
+  </ul>
+
+</div>
+
+

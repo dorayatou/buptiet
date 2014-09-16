@@ -1,0 +1,34 @@
+<div id="topbar">
+  <div id="title">随堂练习</div>
+  <div id="leftnav">
+    <%= link_to "返回", index_student_problems_path %>
+  </div>
+</div>
+  
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "错题库", error_banks_path %><%= link_to "收藏库", favourites_path %>
+  </div>
+</div>
+
+<div id="content">
+  <% if not @exercises.empty? %>
+  <span class="graytitle">练习列表</span>
+  <ul class="pageitem">
+    <% @exercises.each do |exercise| %>
+      <li class="menu">
+        <span class="name"><%= exercise.name %></span>
+        <span>
+          <%= link_to "", exercise_path(exercise) %>
+        </span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  </ul>
+  <% else %>
+    <span class="graytitle">当前没有练习</span>
+  <% end %>
+
+</div>
+
+

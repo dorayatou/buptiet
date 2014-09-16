@@ -1,0 +1,14 @@
+<div id="topbar">
+  <div id="title">新添练习记录</div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= render 'form' %>
+</div>

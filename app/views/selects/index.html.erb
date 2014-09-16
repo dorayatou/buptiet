@@ -1,0 +1,25 @@
+<div id="topbar">
+	<div id="title">选课管理</div>
+	<div id="leftbutton">
+		<%= link_to '返回', show_all_courses_admins_path %>
+	</div>
+</div>
+
+<div id="tributton">
+  <div class="links">
+    <%= link_to "课程管理", courses_path %><%= link_to "授课管理", offers_path %><%= link_to "选课管理", selects_path, :id => "pressed" %>
+  </div>
+</div>
+
+<div id="content">
+	<span class="graytitle">选择学生：</span>
+	<ul class="pageitem">
+    <% @courses.each do |course| %>
+      <li class="menu">
+        <span class="name"><%= course.name %></span>
+        <span><%= link_to "", select_path(course) %></span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

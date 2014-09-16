@@ -1,0 +1,62 @@
+<div id="topbar">
+  <div id="title">个人信息</div>
+  <div id="leftnav">
+    <%= link_to "返回", teachers_path, :method => :get %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '编辑', edit_teacher_info_path(@teacher.teacher_info), :method => :get %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "个人信息", @teacher, :method => :get, "id" => "pressed" %><%= link_to "更改密码", edit_teacher_path(@teacher), :method => :get %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">ID:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @teacher.identifier %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">姓名:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @teacher_info.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">昵称:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @teacher_info.nick %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">邮箱:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @teacher_info.email %></span>
+    </li>
+  </ul>
+  <% if @academy %>
+  <span class="graytitle">学院:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @academy.name %></span>
+    </li>
+  </ul> 
+  <% end %>
+</div>
+

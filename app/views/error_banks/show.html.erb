@@ -1,0 +1,94 @@
+<div id="topbar">
+  <div id="title">试题分析</div>
+  <div id="leftnav">
+    <%= link_to '返回', exercises_path %>
+    <% if @pre_question %>
+      <%= link_to '上一题', show_error_path(@pre_question.id) %>
+    <% end %>
+  </div>
+  <div id="rightnav">
+      <% if @next_question %>
+        <%= link_to '下一题', show_error_path(@next_question.id) %>
+      <% else %>
+        <%= link_to '完成', exercises_path %>
+      <% end %>
+  </div>
+</div>
+
+<div id="content">
+
+    <% if @select_option %>
+   
+      <span class="graytitle">问题:</span>
+      <ul class="pageitem">
+        <li class="textbox">
+          <span class="graytitle">
+            <span class="name"><%= @current_question.body %></span>
+          </span>
+        </li>
+      </ul>
+
+     <span class="graytitle">选项</span>
+        <ul class="pageitem">
+          <% i = 0 %>
+          <% @options.each do |option| %>
+            <li class="checkbox">
+              <% if @select_option.id == option.id %>
+                <span class="name" style="color:red">
+                  <%= @option_all_tags[i] %>   <%= option.body.to_s %>
+                </span>
+              <% else %>
+                <span class="name">
+                  <%= @option_all_tags[i] %>     <%= option.body %>
+                </span>
+              <% end %>
+            </li>
+            <% i = i + 1 %>
+          <% end %>
+        </ul>
+
+      <div>
+        <ul>
+          <li>参考答案：<span style="color:blue"><%= @analyse.body %></span></li>
+          <div>题目解析：<%= @analyse.detail %></div>
+        </ul>
+      </div>
+
+    <% else %>
+
+      <%= form_tag({:controller => "error_banks", :action => "show"}) do %>
+        <span class="graytitle">问题:</span>
+        <ul class="pageitem">
+          <li class="textbox">
+            <span class="graytitle">
+              <span class="name"><%= @current_question.body %></span>
+            </span>
+          </li>
+        </ul>
+
+        <span class="graytitle">选项</span>
+        <ul class="pageitem">
+        <% i = 0 %>
+        <% @options.each do |option| %>
+          <li class="checkbox">
+            <%= radio_button_tag 'option_id', option.id %>
+            <span class="name">
+              <%= @option_all_tags[i] %>     <%= option.body %>
+            </span>
+          </li>
+        <% i = i + 1 %>
+        <% end %>
+        </ul>
+
+        <ul class="pageitem">
+          <li class="button">
+              <%= submit_tag "确定", "type" => "submit" %>
+          </li>
+        </ul>
+      <% end %>
+
+    <% end %>
+
+</div>
+
+

@@ -1,0 +1,37 @@
+<%= form_for(@admin) do |f| %>
+
+  <% if @admin.errors.any? %>
+    <div>
+      <ul>
+        <% @admin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">ID:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :identifier, :size => 20, "placeholder" => "ID", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">密码:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.password_field :password, :size => 20, "placeholder" => "Password", "type" => "password"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">密码确认:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.password_field :password_confirmation, :size => 20, "placeholder" => "Password", "type" => "password"%>
+    </li>
+  </ul>
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>

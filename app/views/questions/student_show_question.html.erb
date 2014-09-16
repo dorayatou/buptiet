@@ -1,0 +1,42 @@
+<div id="topbar">
+  <div id="title">课堂练习</div>
+  <div id="leftnav">
+    <%= link_to '返回', exercises_path %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '下一题' %>
+  </div>
+</div>
+
+<div id="content">
+	  <% if notice %>
+	    <div>
+	      <ul>
+	        <li><%= notice %></li>
+	      </ul>
+	    </div>
+  	<% end %>
+
+  	<span class="graytitle">问题:</span>
+	  <ul class="pageitem">
+	    <li class="textbox">
+	      <span class="graytitle">
+	        <span class="name"><%= @question.body %></span>
+	      </span>
+	    </li>
+	  </ul>
+
+    	<span class="graytitle">选项</span>
+    	<ul class="pageitem">
+        <% i = 0 %>
+    		<% @options.each do |option| %>
+    		  <li class="checkbox">
+              <span class="name">
+                <%= @option_all_tags[i] %>   <%= option.body %>
+              </span>
+    		  </li>
+          <% i = i + 1 %>
+    		<% end %>
+    	</ul>
+
+</div>

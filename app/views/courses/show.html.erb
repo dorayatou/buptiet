@@ -1,0 +1,60 @@
+<div id="topbar">
+  <div id="title">课程详情</div>
+  <div id="leftbutton">
+    <%= link_to '返回', courses_path %>
+  </div>
+</div>
+ 
+<div id="content">
+  
+  <span class="graytitle">课程编号:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.identifier %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程名称:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">学院:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.academy.name %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程信息:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.info %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程标签:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.tag %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程图片:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.image %></span>
+    </li>
+  </ul>
+  
+  <span class="graytitle">课程类型:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @course.kind %></span>
+    </li>
+  </ul>
+
+</div>
+

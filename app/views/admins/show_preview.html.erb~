@@ -1,0 +1,21 @@
+<div id="topbar">
+	<div id="title">实验列表</div>
+	<div id="leftbutton">
+		<%= link_to '返回', admins_path %>
+	</div>
+</div>
+
+<div id="content">
+
+    <span class="graytitle">实验列表</span>
+ 	<ul class="pageitem">
+      	<% @courses.each do |course| %>
+	        <li class="menu">
+		  		<span class="name"><%= course.name %></span>
+		  		<span><%= link_to "", course_course_times_path(course) %></span>
+		  		<span class="arrow"></span>
+		  	</li>
+      	<% end %> 
+  	</ul>
+
+</div

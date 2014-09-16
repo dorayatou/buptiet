@@ -1,0 +1,61 @@
+<div id="topbar">
+  <div id="title">投票系统</div>
+  <div id="leftnav">
+    <%= link_to '返回', index_teacher_problems_path %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新投票', new_topic_path, :method => :get %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "全部投票", show_all_topics_topics_path %><%= link_to "我的投票", show_my_topics_topics_path %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  
+  <span class="graytitle">最新投票</span>
+  <ul class="pageitem">
+    <% @latest_topics.each do |topic| %>
+    <li class="menu">
+      <span class="name" style="width:280;"><%= topic.body %></span>
+      <span><%= link_to "", topic %></span>
+      <span class="arrow"></span>
+    </li>
+    <% end %>
+  </ul>
+  <span class="graytitle">
+    <a href="/topics/show_all_lastest">
+      <span class="name" style="float:right;position:relative;right:20px;text-decoration: underline;">更多</span>
+    </a>
+  </span><br/>
+
+  <span class="graytitle">热门投票</span>
+  <ul class="pageitem">
+    <% @hot_topics.each do |topic| %>
+    <li class="menu">
+      <span class="name" style="width:280;"><%= topic.body %></span>
+      <span><%= link_to "", topic %></span>
+      <span class="arrow"></span>
+    </li>
+    <% end %>
+  </ul>
+  <span class="graytitle">
+      <a href="/topics/show_all_hot">
+        <span class="name" style="float:right;position:relative;right:20px;text-decoration: underline;">更多</span>
+      </a>
+  </span><br/>
+
+</div>
+
+

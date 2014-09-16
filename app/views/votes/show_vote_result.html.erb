@@ -1,0 +1,53 @@
+<div id="topbar">
+  <div id="title">投票系统</div>
+  <div id="leftnav">
+    <%= link_to "返回", votes_path %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">投票结果</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <span class="name"><%= @topic.body %></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">投票统计图示</span>
+  <div class = "image_center">
+    <img src="<%= @topic_results %>" alt="Sample chart" />
+  </div>
+
+  <br/>
+
+  <span class="graytitle">选项</span>
+  <% @topic.opinions.each do |opinion| %>
+    <ul class="pageitem">
+      <li class="textbox">
+        <span class="name">
+          <%= opinion.body %>
+        </span>
+        <% if @topic.cast_count == 0 %>
+          <span class="name" style="float:right">
+            <%= 0 %>
+          </span>
+        <% else %>
+          <span class="name" style="float:right">
+            <%= format("%.1f" ,(opinion.select_count.to_f/@topic.cast_count.to_f)*100) %>%
+          </span>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+
+</div>
+

@@ -1,0 +1,36 @@
+<div id="topbar">
+  <div id="title">新添课程</div>
+  <div id="leftbutton">
+    <%= link_to '返回' %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% if @student.courses.length < 8 %>
+    <%= form_tag({:controller => 'students', :action => 'course_add'}) do %>
+    <span class="graytitle">选择课程:</span>
+      <ul class="pageitem">
+        <li class="select">
+          <%= select_tag(:course, options_from_collection_for_select(Course.all, :id, :name)) %>
+        </li>
+      </ul>
+    <%= submit_tag 'add' %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+

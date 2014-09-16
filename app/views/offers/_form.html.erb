@@ -1,0 +1,55 @@
+<%= form_for(@offer) do |f| %>
+  <% if @offer.errors.any? %>
+    <div>
+      <ul>
+      <% @offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">编号：</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :identifier, :size => 20, "placeholder" => "Identifier", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程:</span>
+  <ul class="pageitem">
+    <li class="select">
+      <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :name)) %>
+      <span class="arrow"></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">教师：</span>
+  <ul class="pageitem">
+    <li class="select">
+      <%= select_tag(:teacher_id, options_from_collection_for_select(@teacher_infos, :id, :name)) %>
+      <span class="arrow"></span>
+    </li>
+  </ul>
+
+  <span class="graytitle">地点:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :address, :size => 20, "placeholder" => "Address", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">开课时间:</span>
+  <ul class="pageitem">
+    <%= f.date_select :begin %>
+  </ul>
+  <span class="graytitle">结课时间:</span>
+  <ul class="pageitem">
+    <%= f.date_select :end %>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>

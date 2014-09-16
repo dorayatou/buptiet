@@ -1,0 +1,32 @@
+<%= form_for(@question, :url => { :action => "create" }) do |f| %>
+
+  <% if @question.errors.any? %>
+    <div>
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">问题:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.select :question_type, options_for_select([['单选', '1'], ['多选', '2'], ['问答', '3']]), :type => "select" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :body, :size => "30x5", "placeholder" => "Question", "type" => "text" %>
+    </li>
+  </ul>
+
+
+
+  <ul class="pageitem">
+    <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

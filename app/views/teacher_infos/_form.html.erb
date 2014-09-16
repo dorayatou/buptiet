@@ -1,0 +1,45 @@
+<%= form_for(@teacher_info, :html =>{ "data-ajax" => false }) do |f| %>
+  <% if @teacher_info.errors.any? %>
+    <div>
+      <ul>
+      <% @teacher_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">名字:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :name, :size => 20, "placeholder" => "Name", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">昵称:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :nick, :size => 20, "placeholder" => "Nick", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">邮箱:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :email, :size => 20, "placeholder" => "Email", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">学院:</span>
+  <ul class="pageitem">
+    <li class="select">
+      <%= select_tag(:academy_id, options_from_collection_for_select(Academy.all, :id, :name)) %>
+      <span class="arrow"></span>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

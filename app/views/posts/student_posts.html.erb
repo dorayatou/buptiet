@@ -1,0 +1,47 @@
+<div id="topbar">
+  <div id="title">群组讨论</div>
+  <div id="leftnav">
+    <%= link_to '首页', students_path %><%= link_to '返回', student_groups_path %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新添', new_student_post_path(@group) %>
+  </div>
+</div>
+ 
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">消息列表</span>
+  <ul class="pageitem">
+  <% if not @teacher_posts.nil? %>
+    <% @teacher_posts.each do |post| %>
+      <li class="store">
+        <span class="comment">From :    <%= post.teacher.teacher_info.name%></span> <span class="name" style="width:280px"><%= post.title %></span>
+        <span><%= link_to "", student_show_post_path(@group, post) %></span>
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  <% end %>
+  <% if not @student_posts.nil? %>
+    <% @student_posts.each do |post| %>
+      <li class="store">
+        <span class="comment">From :    <%= post.student.student_info.name%></span> <span class="name" style="width:280px"><%= post.title %></span>
+        <span><%= link_to "", student_show_post_path(@group, post) %></span>
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  <% end %> 
+  </ul>
+
+</div>

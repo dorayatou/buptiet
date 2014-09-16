@@ -1,0 +1,59 @@
+<%= form_for(@buptcourse, :url => { :action => "create" }) do |f| %>
+
+  <% if @buptcourse.errors.any? %>
+    <div>
+      <ul>
+      <% @buptcourse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <span class="graytitle">课程类型:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :course_type, :size => "20", "placeholder" => "no 或 yes", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程名称:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :course_name, :size => "60", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">授课教师:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :course_lecturer, :size => "60", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">授课教师信息:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :course_lecturer_intro, :size => "60", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程信息:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :course_intro, :size => "60x12", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课程图片路径:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :course_image, :size => "60", "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

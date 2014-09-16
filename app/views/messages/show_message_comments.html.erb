@@ -1,0 +1,46 @@
+<div id="topbar">
+  <div id="title">消息详情</div>
+  <div id="leftnav">
+    <% if session[:teacher_id] %>
+      <%= link_to '返回', teachers_path %>
+    <% elsif session[:student_id] %>
+      <%= link_to '返回', students_path %>
+    <% end %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新添', new_message_comment_path(@post) %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "消息详情", show_message_path(@post), :method => :get %><%= link_to "全部评论", show_message_comments_path(@post), :method => :get, "id" => "pressed" %>
+  </div>
+</div>
+
+<div class="content">
+	<span class="graytitle">全部评论</span>
+  <% @comments.each do |comment| %>
+    <ul class="pageitem">
+      <li class="textbox">
+        <span class="header">
+          <% if not comment.teacher_id.nil? %>
+            <%= comment.teacher.teacher_info.name %>
+          <% else %>
+            <%= comment.student.student_info.name %>
+          <% end %>
+        </span>
+        <%= comment.body %>
+        <p>
+          <% if comment.teacher_id and comment.teacher_id == session[:teacher_id] %>
+            <%= link_to '新添', new_message_comment_path(@post), :method => :get %> |
+            <%= link_to "删除", destroy_message_comment_path(@post, comment), :confirm => "Are you sure?", :method => :delete %>
+          <% elsif comment.student_id and comment.student_id == session[:student_id] %>
+            <%= link_to '新添', new_message_comment_path(@post), :method => :get %> |
+            <%= link_to "删除", destroy_message_comment_path(@post, comment), :confirm => "Are you sure?", :method => :delete %>
+          <% end %>
+        </p>  
+      </li>
+    </ul>
+  <% end %>
+</div>

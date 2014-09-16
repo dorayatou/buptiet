@@ -1,0 +1,62 @@
+<div id="topbar">
+  <div id="title">课堂练习</div>
+  <div id="leftnav">
+    <%= link_to '返回', course_quiz_questions_path(@current_course, @current_quiz) %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+	<span class="graytitle">问题:</span>
+	  <ul class="pageitem">
+	    <li class="textbox">
+	      <span class="graytitle">
+	        <span class="name"><%= @question.body %></span>
+	      </span>
+	    </li>
+	  </ul>
+
+    <% if @options %>
+      <span class="graytitle">选项</span>
+      <ul class="pageitem">
+        <% i = 0 %>
+        <% @options.each do |option| %>
+          <li class="checkbox">
+            <span class="name">
+                <%= @option_all_tags[i] %> <%= option.body %>
+            </span>
+          </li>
+        <% i = i + 1 %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @analyse %>
+      <span class="graytitle">分析：</span>
+      <div>
+        <ul>
+          <li>
+            参考答案：<%= @analyse.body %> 
+            
+            <%= link_to '删除', course_quiz_question_analysis_path(@current_course.id, @current_quiz.id, @question.id, @analyse.id), :method => :delete, :confirm => "Are you sure?" %>
+            <p>解析：<%= @analyse.detail %></p>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+
+    <span class="graytitle">
+      <span class="name" style="float:right;position:relative;right:20px;text-decoration: underline;">
+        <h1 style="float:right;position:relative;right:20px;text-decoration: underline;"><%= link_to '添加选项', new_course_quiz_question_option_path(@current_course.id, @current_quiz.id, @question.id), :method => :get %> | <%= link_to '添加分析', new_course_quiz_question_analysis_path(@current_course.id, @current_quiz.id, @question.id) %></h1>
+      </span>
+    </span>      
+</div>
+

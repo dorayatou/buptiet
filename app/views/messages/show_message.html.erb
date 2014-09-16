@@ -1,0 +1,62 @@
+<div id="topbar">
+  <div id="title">消息详情</div>
+  <div id="leftnav">
+    <% if session[:teacher_id] %>
+      <%= link_to '返回', teachers_path %>
+    <% elsif session[:student_id] %>
+      <%= link_to '返回', students_path %>
+    <% end %>
+  </div>
+</div>
+
+<div id="content">
+
+  <div id="postcomment">
+    <div id="postimage">
+      <%= image_tag("user.png") %>
+    </div>
+
+    <div id="postcomment">
+      <ul class="pageitem1">
+        <li class="textbox">
+          <span style="color:red;">
+            <% if not @teacher_info.nil? %>
+              <%= @teacher_info.name %>: 
+            <% elsif not @student_info.nil? %>
+              <%= @student_info.name %>: 
+            <% end %>
+          </span>
+          <p class="postbody">
+            <%= @post.body %>
+          </p>
+          <br />
+          <p class="postcommentlink">
+            <%= link_to '评论', new_message_comment_path(@post), :method => :get %>
+          </p>
+        </li>
+
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <li class="textbox">
+              <span class="commentname">
+                <% if not comment.teacher_id.nil? %>
+                  <%= comment.teacher.teacher_info.name %>:
+                <% else %>
+                  <%= comment.student.student_info.name %>:
+                <% end %>
+                <span class="commentbody"><%= comment.body %></span>
+              </span>
+              <br />
+            </li>
+          <% end %>
+        <% end %>
+
+      </ul>
+    </div>
+    
+  </div> 
+
+
+</div>
+
+

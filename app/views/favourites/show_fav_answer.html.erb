@@ -1,0 +1,64 @@
+<div id="topbar">
+  <div id="title">课堂练习</div>
+  
+  <div id="leftnav">
+    <%= link_to '返回', exercises_path %>
+  </div>
+
+  <div id="rightnav">
+      <%= link_to '完成', exercises_path %>
+  </div>
+
+</div>
+
+<div id="content">
+        <span class="graytitle">问题:</span>
+        <ul class="pageitem">
+          <li class="textbox">
+            <span class="graytitle">
+              <span class="name"><%= @current_question.body %></span>
+            </span>
+          </li>
+        </ul>
+
+        <span class="graytitle">选项</span>
+        <ul class="pageitem">
+          <% i = 0 %>
+          <% @options.each do |option| %>
+            <li class="checkbox">
+              <% if @select_option.id == option.id %>
+                <span class="name" style="color:red">
+                  <%= @option_all_tags[i] %>   <%= option.body.to_s %>
+                </span>
+              <% else %>
+                <span class="name">
+                  <%= @option_all_tags[i] %>     <%= option.body %>
+                </span>
+              <% end %>
+            </li>
+            <% i = i + 1 %>
+          <% end %>
+        </ul>
+
+        <% if @fav %>
+          <ul class="pageitem">
+                <li class="button", style="line-height: 43px;">
+                    <%= button_to "取消收藏", show_fav_answer_path(@current_question.id, @select_option.id), :method => :get %>
+                </li>
+          </ul>
+        <% else %>
+            <ul class="pageitem">
+                <li class="button", style="line-height: 43px;">
+                    <%= button_to "收藏", show_fav_answer_path(@current_question.id, @select_option.id), :method => :get %>
+                </li>
+            </ul>
+        <% end %>
+
+      <div>
+          <ul>
+            <li>参考答案：<span style="color:blue"><%= @analyse.body %></span></li>
+            <div>题目解析：<%= @analyse.detail %></div>
+          </ul>
+      </div>
+      
+</div>

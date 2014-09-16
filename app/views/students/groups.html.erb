@@ -1,0 +1,36 @@
+<div id="topbar">
+  <div id="title">新添群组</div>
+  <div id="leftbutton">
+    <%= link_to '返回' %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% if @student.groups.length < 8 %>
+    <%= form_tag({:controller => 'students', :action => 'group_add'}) do %>
+    <span class="graytitle">选择群组:</span>
+      <ul class="pageitem">
+        <li class="select">
+          <%= select_tag(:group, options_from_collection_for_select(Group.all, :id, :name)) %>
+        </li>
+      </ul>
+    <%= submit_tag 'add' %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<%= form_for(@file_serve, :url => { :action => "create" }) do |f| %>
+
+  <% if @file_serve.errors.any? %>
+    <div>
+      <ul>
+      <% @file_serve.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">资源名称:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :title, :size => "30x5", "placeholder" => "Title", "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+    <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

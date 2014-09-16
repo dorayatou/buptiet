@@ -1,0 +1,39 @@
+<div id="topbar">
+  <div id="title">结果分析</div>
+  <div id="leftnav">
+    <%= link_to "问题墙", index_student_problems_path %>
+    <%= link_to "返回", exercises_path %>
+  </div>
+</div>
+
+<% if @wrong_question %>
+  <div id="duobutton">
+    <div class="links">
+      <%= link_to "试题分析", show_analyse_path(@exercise.id, @question.id) %><%= link_to "错题分析", show_wrong_question_analyse_path(@exercise, @wrong_question.id) %>
+    </div>
+  </div>
+<% else %>
+  <div id="duobutton">
+    <div class="links">
+      <%= link_to "试题分析", show_analyse_path(@exercise.id, @question.id) %><%= link_to "错题分析", answer_results_path(@exercise) %>
+    </div>
+  </div>
+<% end %>
+
+
+<div id="content">
+
+  <span class="graytitle">测试结果</span>
+  <ul class="pageitem">
+      <p style="margin:10px 25% 10px 5%;">
+        <span class="graytitle">耗时: <%= @test_time %> 分钟</span>
+      </p>
+      <p style="margin:10px 25% 10px 5%;">
+        <span class="graytitle">回答题目: <%= @answers.count %> 道</span>
+      </p>
+      <p style="margin:10px 25% 10px 5%;">
+        <span class="graytitle">答对数目： <%= @correct_answers.count %> 道</span>
+      </p>
+  </ul>
+
+</div>

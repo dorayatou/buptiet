@@ -1,0 +1,37 @@
+<div id="topbar">
+  <div id="title">管理员列表</div>
+  <div id="leftbutton">
+    <%= link_to '主页', admins_path, :method => :get %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新添', new_admin_path, :method => :get %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "管理员列表", show_all_admins_admins_path, :method => :get, "id" => "pressed" %><%= link_to "学院管理", academies_path %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">注册管理员</span>
+  <ul class="pageitem">
+  <% @admins.each do |admin| %>
+    <li class="menu">
+      <span class="name"><%= admin.identifier %></span>
+      <span class="arrow"></span>
+    </li>
+  <% end %>
+  </ul>
+
+</div>
+

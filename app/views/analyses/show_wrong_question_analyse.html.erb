@@ -1,0 +1,85 @@
+<div id="topbar">
+  <div id="title">错题分析</div>
+  <div id="leftnav">
+    <%= link_to '返回', exercises_path %>
+    <% if @pre_question %>
+      <%= link_to '上一题', show_wrong_question_analyse_path(@exercise.id, @pre_question.id) %>
+    <% end %>
+  </div>
+  <div id="rightnav">
+      <%= link_to '完成', answers_path(@exercise) %>
+      <% if @next_question %>
+        <%= link_to '下一题', show_wrong_question_analyse_path(@exercise.id, @next_question.id) %>
+      <% end %>
+  </div>
+</div>
+
+<div id="content">
+
+   
+    	<span class="graytitle">问题:</span>
+  	  <ul class="pageitem">
+  	    <li class="textbox">
+  	      <span class="graytitle">
+  	        <span class="name"><%= @current_question.body %></span>
+  	      </span>
+  	    </li>
+  	  </ul>
+
+      <span class="graytitle">选项</span>
+      <ul class="pageitem">
+          <% i = 0 %>
+      		<% @options.each do |option| %>
+          
+      		  <li class="checkbox">
+            <% if @check_answer %>
+                <% if @check_answer.option_id == option.id %>
+                  <% if @check_answer.correct %>
+                    <span class="name" style="color:red">
+                        <%= @option_all_tags[i] %>   <%= option.body.to_s + "     " + "（答对了）" %>
+                    </span>
+                  <% else %>
+                    <span class="name" style="color:red">
+                        <%= @option_all_tags[i] %>   <%= option.body.to_s + "     " + "（答错了）" %>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <span class="name">
+                    <%= @option_all_tags[i] %>   <%= option.body %>
+                  </span> 
+                <% end %>  
+            <% else %>
+              <span class="name">
+                <%= @option_all_tags[i] %>   <%= option.body %>
+              </span>
+            <% end %>
+      		  </li>
+            <% i = i + 1 %>
+      		<% end %>
+      </ul>
+
+      <% if @check_fav.nil? %>
+        <%= form_tag({:controller => "favourites", :action => "fav_wrong_question"}) do %>
+          <ul class="pageitem">
+            <li class="button">
+                <%= submit_tag "收藏", "type" => "submit" %>
+            </li>
+          </ul>
+        <% end %>
+      <% else %>
+        <ul class="pageitem">
+            <li class="button", style="line-height: 43px;">
+                <%= button_to "取消收藏", destroy_fav_wrong_question_path(@exercise.id, @current_question.id), :method => :delete %>
+            </li>
+        </ul>
+      <% end %>
+
+      <div>
+        <ul>
+          <li>参考答案：<span style="color:blue"><%= @analyse.body %></span></li>
+          <div>题目解析：<%= @analyse.detail %></div>
+        </ul>
+      </div>
+
+</div>
+

@@ -1,0 +1,20 @@
+<div id="topbar">
+  <div id="title">新添投票</div>
+  <div id="leftnav">
+    <%= link_to '返回', topics_path %>
+  </div>
+</div>
+ 
+<div id="content">
+	<% if notice %>
+	    <div>
+	      <ul>
+	        <li><%= notice %></li>
+	      </ul>
+	    </div>
+  	<% end %>
+  	
+  <%= render 'form' %>
+</div>
+
+

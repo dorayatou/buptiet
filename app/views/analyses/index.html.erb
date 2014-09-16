@@ -1,0 +1,59 @@
+<div id="topbar">
+  <div id="title"><%= @current_quiz.name %></div>
+  <div id="leftnav">
+    <%= link_to '问题墙', index_teacher_problems_path %><%= link_to '返回', teacher_quiz_path(@current_quiz) %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "问题列表", teacher_show_quiz_path(@current_course, @current_quiz), :method => :get %><%= link_to "结果统计", course_quiz_analyses_path(@current_course, @current_quiz), :method => :get, :id => "pressed" %>
+  </div>
+</div>
+ 
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <% if not @questions.empty? %>
+    <% @num = 1 %>
+    <% @questions.each do |question| %>
+      <span class="graytitle"><%= "第" + @num.to_s + "题" %></span>
+      <ul class="pageitem">
+          <li class="textbox">
+            <span class="name"><%= question.body %></span>
+            <span class="name" style="float:right">
+              <% if question.total_num != 0 %>
+                <%= format("%.1f", (question.correct_num.to_f/question.total_num.to_f)*100) %>%
+              <% else %>
+                <%= 0.0 %>%
+              <% end %>
+            </span>
+            <span><%= link_to "" %></span>
+            <span class="arrow"></span>
+          </li>
+      </ul>
+      <% @num = @num + 1 %>
+    <% end %>
+  <% else %>
+    <% if @current_quiz.name == "找一找" %>
+      <%= render 'finding_tone_scores' %>
+    <% elsif @current_quiz.name == "玩一玩" %>
+      <%= render 'playing_tone_scores' %>
+    <% elsif @current_quiz.name == "练一练" %>
+      <%= render 'practice_tone_scores' %>
+    <% elsif @current_quiz.name == "儿童智力测试量表" %>
+      <%= render 'iqtests' %>
+    <% elsif @current_quiz.name == "图形操作" %>
+      <%= render 'image_courses' %>
+    <% else %>
+      <span class="graytitle">暂无统计</span>
+    <% end %>
+  <% end %>
+
+</div>

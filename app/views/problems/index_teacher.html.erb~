@@ -1,0 +1,12 @@
+<meta http-equiv="refresh" content="30" />
+<div id="topbar">
+  <div id="title">在线课堂</div>
+  <div id="leftnav">
+    <%= link_to "返回", teachers_path, :method => :get %>
+  </div>
+</div>
+
+<%= render(:partial => 'menu') %>
+<%= render 'problem' %>
+
+

@@ -1,0 +1,31 @@
+<%= form_for(@analyse, :url => { :action => "create" }) do |f| %>
+
+  <% if @analyse.errors.any? %>
+    <div>
+      <ul>
+      <% @analyse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <span class="graytitle">正确选项:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :body, :size => 20, "placeholder" => "ID", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">分析:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :detail, :size => "60x12", "placeholder" => "Content", "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

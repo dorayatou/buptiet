@@ -1,0 +1,80 @@
+<%= form_for(@buptexercise, :url => { :action => "create" }) do |f| %>
+
+  <% if @buptexercise.errors.any? %>
+    <div>
+      <ul>
+      <% @buptexercise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <span class="graytitle">问题类型:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.select :question_type, options_for_select([['选择', 'Select'], ['判断', 'Judge'], ['问答', 'Question']]), "type" => "select" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">题号:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :question_num, "type" => "select" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">问题:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :question, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">选项A:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :option_a, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">选项B:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :option_b, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">选项C:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :option_c, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">选项D:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :option_d, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">答案:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :answer, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">分析:</span>
+  <ul class="pageitem">
+    <li class="textbox">
+      <%= f.text_area :analysis, :size => "60x6", "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

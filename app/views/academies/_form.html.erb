@@ -1,0 +1,31 @@
+<%= form_for(@academy) do |f| %>
+
+  <% if @academy.errors.any? %>
+    <div>
+      <ul>
+        <% @academy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">ID:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :identifier, :size => 20, "placeholder" => "ID", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">学院名称:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.password_field :name, :size => 20, "placeholder" => "Name", "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>

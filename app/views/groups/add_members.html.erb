@@ -1,0 +1,35 @@
+<div id="topbar">
+  <div id="title">新添成员</div>
+  <div id="leftnav">
+    <%= link_to '返回' %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_tag({controller: "groups", action: "add_members_finish"}) do %>
+    <span class="graytitle">学生列表</span>
+    <ul class="pageitem">
+      <% @student_infos.each do |student_info| %>
+      <li class="checkbox">
+        <%= check_box_tag 'member_ids[]', student_info.student_id %>
+        <span class="name"><%= student_info.name %></span>
+      </li>
+      <% end %>
+    </ul>
+
+    <ul class="pageitem">
+      <li class="button"><%= submit_tag "新添", "type" => "submit" %>
+      </li>
+    </ul>
+    
+  <% end %>
+
+</div>

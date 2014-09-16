@@ -1,0 +1,44 @@
+<%= form_for(@course_time, :url => { :action => "create" }) do |f| %>
+  <% if @course_time.errors.any? %>
+    <div>
+      <ul>
+      <% @course_time.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">星期:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :weekday, :size => 20, "placeholder" => "weekday", "type" => "text" %>
+    </li>
+  </ul>
+
+  <span class="graytitle">时段:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :period, :size => 20, "placeholder" => "period", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">学年:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :year, :size => 20, "placeholder" => "year", "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">月份:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :month, "placeholder" => "month", "type" => "text" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+  
+<% end %>

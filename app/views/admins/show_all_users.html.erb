@@ -1,0 +1,36 @@
+<div id="topbar">
+  <div id="title">用户管理</div>
+  <div id="leftbutton">
+    <%= link_to '主页', admins_path, :method => :get %>
+  </div>
+</div>
+
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">教师列表：</span>
+  <ul class="pageitem">
+  <% @teachers.each do |teacher| %>
+    <li class="menu">
+      <span class="name"><%= teacher.teacher_info.name %></span>
+    </li>
+  <% end %>
+  </ul>
+
+  <span class="graytitle">学生列表：</span>
+  <ul class="pageitem">
+  <% @students.each do |student| %>
+    <li class="menu">
+      <span class="name"><%= student.student_info.name %></span>
+    </li>
+  <% end %>
+  </ul>
+
+</div>
+

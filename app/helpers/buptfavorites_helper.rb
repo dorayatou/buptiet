@@ -1,0 +1,2 @@
+module BuptfavoritesHelper
+end

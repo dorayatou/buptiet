@@ -1,0 +1,26 @@
+<span class="graytitle">最新消息</span>
+<% if not session[:student_id].nil? %>
+  <% @teacher_posts.each do |post| %>
+    <ul class="pageitem">
+      <li class="store" style="height:80px">
+        <span class="comment"><%= post.teacher.teacher_info.name %> : </span>   
+        <p style="margin:5px 0% 10px 25%;"><%= post.title %></p>  
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+    </ul>
+  <% end %>
+<% elsif session[:teacher_id].nil? %>
+  <% @student_posts.each do |post| %>
+    <ul class="pageitem">
+      <li class="store" style="height:80px">
+        <span class="comment"><%= post.student.student_info.name %> : </span>   
+        <p style="margin:5px 0% 10px 25%;"><%= problem.body %></p>  
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_for(@opinion, :url => { :action => "create" }) do |f| %>
+  <% if @opinion.errors.any? %>
+    <div>
+      <ul>
+      <% @opinion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">投票选项:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :body, :size => 20, "placeholder" => "Body", "type" => "text" %>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确认", "type" => "submit" %></li>
+  </ul>
+<% end %>

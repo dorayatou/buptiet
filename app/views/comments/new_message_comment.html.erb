@@ -1,0 +1,27 @@
+<div id="topbar">
+  <div id="title">新添评论</div>
+  <div id="leftnav">
+      <%= link_to '返回', show_message_path(@post) %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= render 'form_message' %>
+</div>
+
+
+
+
+
+
+
+
+
+

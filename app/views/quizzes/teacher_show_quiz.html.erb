@@ -1,0 +1,54 @@
+<div id="topbar">
+	<div id="title"><%= @current_quiz.name %></div>
+	<div id="leftnav">
+		<%= link_to '返回', teacher_quiz_path(@current_course) %>
+	</div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "问题列表", teacher_show_quiz_path(@current_course, @current_quiz), :method => :get, :id => "pressed" %><%= link_to "统计结果", course_quiz_analyses_path(@current_course, @current_quiz), :method => :get %>
+  </div>
+</div>
+
+<div id="content">
+    <span class="graytitle", style ="color:blue;">练习时间: <%= @current_quiz.quiz_time %> 分钟 题目总数: <%= @questions.count %> 道</span>
+     
+      
+     <br />
+     <br />
+     <br />
+
+    <% @num = 1 %>
+    <% @questions.each do |question| %>
+    	<span class="graytitle"><%= "第" + @num.to_s + "题" %></span>
+    	<ul class="pageitem">
+		    <li class="textbox">
+		      <span class="graytitle">
+		        <span class="name"><%= question.body %></span>
+		      </span>
+		    </li>
+	  	</ul>
+	  	<span class="graytitle">选项</span>
+	  	<ul class="pageitem">
+    		<% i = 0 %>
+    		<% question.options.each do |option| %>
+    		  <li class="checkbox">
+	              <span class="name">
+	                <%= @option_all_tags[i] %>   <%= option.body %>
+	              </span>
+    		  </li>
+          	<% i = i + 1 %>
+      		<% end %>
+      	</ul>
+
+      	<div>
+	        <ul>
+	          <li>参考答案：<span style="color:blue"><%= question.analyse.body %></span></li>
+	          <div>题目解析：<%= question.analyse.detail %></div>
+	        </ul>
+      	</div>
+      	<% @num = @num + 1 %>
+    <% end %>
+ 
+</div>

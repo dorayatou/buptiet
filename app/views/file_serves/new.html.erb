@@ -1,0 +1,18 @@
+<div id="topbar">
+  <div id="title">新添资源</div>
+  <div id="leftbutton">
+    <%= link_to '返回', file_serves_path %>
+  </div>
+</div>
+ 
+<div id="content">
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= render 'form' %>
+</div>

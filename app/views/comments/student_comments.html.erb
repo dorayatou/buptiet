@@ -1,0 +1,45 @@
+<div id="topbar">
+  <div id="title">群组讨论</div>
+  <div id="leftnav">
+    <%= link_to '返回', student_posts_path(@group) %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新添', new_student_comment_path(@group, @post) %>
+  </div>
+</div>
+
+<div id="content">
+
+  <% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">全部评论</span>
+  <% @comments.each do |comment| %>
+    <ul class="pageitem">
+      <li class="textbox">
+        <span class="header">
+          <% if not comment.teacher_id.nil? %>
+            <%= comment.teacher.teacher_info.name %>
+          <% else %>
+            <%= comment.student.student_info.name %>
+          <% end %>
+        </span>
+        <%= comment.body %>
+        <p>
+          <% if comment.student_id == session[:student_id] %>
+            <%= link_to '新添', new_student_comment_path(@group, @post), :method => :get %> |
+            <%= link_to '删除', destroy_comment_path(@group, @post, comment), :method => :delete, :confirm => 'Are you sure?' %>
+          <% end %>
+        </p>  
+      </li>
+    </ul>
+  <% end %>
+
+</div>
+
+

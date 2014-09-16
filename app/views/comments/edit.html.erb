@@ -1,0 +1,23 @@
+<div id="topbar">
+  <div id="title">编辑评论</div>
+  <div id="leftbutton">
+    <% if session[:teacher_id] %>
+      <%= link_to '返回', group_post_comments_path(@group, @post) %>
+    <% elsif session[:student_id] %>
+      <%= link_to '返回', student_comments_path(@group, @post) %>
+    <% end %>
+  </div>
+</div>
+ 
+<div id="content">
+	<% if notice %>
+	    <div>
+	      <ul>
+	        <li><%= notice %></li>
+	      </ul>
+	    </div>
+  	<% end %>
+  	
+  <%= render 'form' %>
+</div>
+

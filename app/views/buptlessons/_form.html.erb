@@ -1,0 +1,52 @@
+<%= form_for(@buptlesson, :url => { :action => "create" }) do |f| %>
+
+  <% if @buptlesson.errors.any? %>
+    <div>
+      <ul>
+      <% @buptlesson.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <span class="graytitle">课时编号:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :lesson_num, "type" => 'text' %>
+    </li>
+  </ul>
+
+  <span class="graytitle">课时图片路径:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :lesson_pic, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课时目标:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :lesson_goal, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课时难点:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :lesson_difficulty, "type" => "text"%>
+    </li>
+  </ul>
+
+  <span class="graytitle">课时视频路径:</span>
+  <ul class="pageitem">
+    <li class="bigfield">
+      <%= f.text_field :lesson_website, "type" => "text"%>
+    </li>
+  </ul>
+
+  <ul class="pageitem">
+      <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>
+  </ul>
+
+<% end %>

@@ -1,0 +1,32 @@
+<div id="topbar">
+	<div id="title">《<%= @course.name %>》选课</div>
+	<div id="leftbutton">
+		<%= link_to '返回', selects_path %>
+	</div>
+</div>
+
+<div id="content">
+	<span class="graytitle">请选择学生：</span>
+	<br />
+	<br />
+	<%= form_tag({:controller => "selects", :action => "student_add"}) do %>
+		<ul class="pageitem">
+          <% @students.each do |student| %>
+            <li class="checkbox">
+                <%= check_box_tag 'student_ids[]', student.id %>
+                <span class="name">
+                   <%= student.student_info.name %>
+                </span>
+            </li> 
+          <% end %>
+        </ul>
+
+        <ul class="pageitem">
+          <li class="button">
+              <%= submit_tag "确定", "type" => "submit" %>
+          </li>
+        </ul>
+	<% end %>
+
+	
+</div>

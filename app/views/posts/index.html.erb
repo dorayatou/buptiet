@@ -1,0 +1,57 @@
+<div id="topbar">
+  <div id="title">群组讨论</div>
+  <div id="leftnav">
+    <%= link_to '首页', teachers_path %><%= link_to '返回', groups_path %>
+  </div>
+  <div id="rightnav">
+    <%= link_to '新添', new_group_post_path(@group), :method => :get %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "全部消息", group_posts_path(@group), :method => :get, "id" => "pressed" %><%= link_to "群组管理", edit_group_path(@group) %>
+  </div>
+</div>
+ 
+<div id="content">
+
+	<% if notice %>
+    <div>
+      <ul>
+        <li><%= notice %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="graytitle">消息列表</span>
+  <ul class="pageitem">
+  <% if @teacher_posts %>
+    <% @teacher_posts.each do |post| %>
+      <li class="store">
+        <span class="comment">From :    <%= post.teacher.teacher_info.name %></span>
+        <span class="name" style="width:280px"><%= post.title %></span>
+        <span><%= link_to "", group_post_path(@group, post) %></span>
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+
+    <% end %>
+  <% end %>
+  <% if @student_posts %>
+    <% @student_posts.each do |post| %>
+      <li class="store">
+        <span class="comment">From:   <%= post.student.student_info.name %></span>
+        <span class="name" style="width:280px"><%= post.title %></span>
+        <span><%= link_to "", group_post_path(@group, post) %></span>
+        <span class="image"><%= image_tag("default_face.png") %></span>
+        <span class="starcomment"><%= post.created_at %></span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+
+</div>
+

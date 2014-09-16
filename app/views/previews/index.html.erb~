@@ -1,0 +1,13 @@
+<div id="topbar">
+	<div id="title"><%= @course.name %>--预习材料</div>
+	<div id="leftbutton">
+		<%= link_to '返回', show_previews_admins_path %>
+	</div>
+	
+</div>
+
+<% @previews.each do |pre| %>
+	<p><%= pre.body %></p>
+<% end %>
+
+<h1 style="float:right;position:relative;right:20px;text-decoration: underline;"><%= link_to '新添', new_course_preview_path(@course.id) %></h1

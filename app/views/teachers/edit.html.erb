@@ -1,0 +1,23 @@
+<div id="topbar">
+  <div id="title">更改密码</div>
+  <div id="leftnav">
+    <%= link_to '返回', teachers_path, :method => :get %>
+  </div>
+</div>
+
+<div id="duobutton">
+  <div class="links">
+    <%= link_to "个人信息",  @teacher, :method => :get %><%= link_to "更改密码", edit_teacher_path(@teacher), :method => :get, "id" => "pressed" %>
+  </div>
+</div>
+ 
+<div id="content">
+	<% if notice %>
+	    <div>
+	      <ul>
+	        <li><%= notice %></li>
+	      </ul>
+	    </div>
+  	<% end %>
+  <%= render 'password' %>
+</div>

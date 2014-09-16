@@ -1,0 +1,2 @@
+module BuptlessonsHelper
+end

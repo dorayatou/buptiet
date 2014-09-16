@@ -1,0 +1,17 @@
+<div id="topbar">
+	<div id="title">《<%= @course.name %>》选课学生列表</div>
+	<div id="leftbutton">
+		<%= link_to '返回', selects_path %>
+	</div>
+</div>
+
+<div id="content">
+	<span class="graytitle">学生列表：</span>
+	<ul class="pageitem">
+    <% @students.each do |student| %>
+      <li class="menu">
+        <span class="name"><%= student.student_info.name %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
