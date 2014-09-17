@@ -345,9 +345,9 @@ ActiveRecord::Schema.define(:version => 20140916071209) do
     t.integer  "teacher_id"
     t.integer  "student_id"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "number"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "number",     :default => 0
   end
 
   create_table "questions", :force => true do |t|
