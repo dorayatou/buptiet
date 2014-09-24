@@ -6,9 +6,9 @@
  		 </div>
 		</div>
 <% else %>
-<div id="duobutton">
+<div id="tributton">
   <div class="links">
-     <%= link_to "课前测试", exercises_path %><%= link_to "投票系统", votes_path %>
+		<%= link_to "课前测试", exercises_path %><%= link_to "投票系统", votes_path %><a disabled="true">预习材料</a>
   </div>
 </div>
 <% end %>

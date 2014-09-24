@@ -132,6 +132,7 @@ Buptiet::Application.routes.draw do
       get 'room/index_teacher' => 'problems#index_teacher', :as => "index_teacher"
       get 'room/index_student' => 'problems#index_student', :as => "index_student"
       get 'room/problem_zan/:problem_id' => 'problems#problem_zan', as: 'problem_zan'
+			get 'room/problems/:problem_id' => 'problems#destroy', as: 'delete_problem'
 	 	end
   end
   

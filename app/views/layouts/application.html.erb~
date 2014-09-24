@@ -16,11 +16,15 @@
   </style>
 </head>
 <body>
+<<<<<<< HEAD
 
 
 
 <%= yield %>
 
 <div id="footer">Copyright 2013 BUPT. All rights reserved.</div>
+=======
+<%= yield %>
+>>>>>>> 6db57df4c54ac41c21cd25b3b1c4b0b844b560e6
 </body>
 </html>

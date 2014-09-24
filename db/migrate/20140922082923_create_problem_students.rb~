@@ -1,0 +1,8 @@
+class CreateProblemStudents < ActiveRecord::Migration
+  def change
+    create_table :problem_students do |t|
+
+      t.timestamps
+    end
+  end
+end

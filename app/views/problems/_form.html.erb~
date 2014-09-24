@@ -17,7 +17,11 @@
     </li>
 	</ul>
 
-	
+	<ul class="pageitem">
+		<li class="bigfield">
+    	<%= f.text_field :url, "placeholder" => "请输入您要添加的地址", "type" => "text" %>
+		</li>
+  </ul>
 
   <ul class="pageitem">
     <li class="button"><%= submit_tag "确定", "type" => "submit" %></li>

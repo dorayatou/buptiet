@@ -7,6 +7,6 @@
 </div>
 
 <%= render(:partial => 'menu') %>
-<%= render 'problem' %>
+<%= render 'problemwall' %>
 
 

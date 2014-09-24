@@ -1,7 +1,11 @@
 <div id="topbar">
   <div id="title">新问题</div>
   <div id="leftnav">
-    <%= link_to '返回', index_student_problems_path, :method => :get %>
+    <% if not session[:student_id].nil? %>
+      <%= link_to '返回', index_student_problems_path, :method => :get %>
+    <% elsif not session[:teacher_id].nil? %>
+      <%= link_to '返回', index_teacher_problems_path, :method => :get %>
+    <% end %>
   </div>
 </div>
  

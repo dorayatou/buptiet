@@ -16,6 +16,10 @@ module ApplicationHelper
 		current_course ||= Course.find(session[:course_id])
 	end
 
+	def current_student
+		Student.where('id = ?', session[:student_id])
+	end
+
 	def student?
     Student.where('id = ?', session[:student_id]).present?		
 	end

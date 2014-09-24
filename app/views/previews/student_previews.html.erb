@@ -9,5 +9,8 @@
 
 <% @previews.each do |preview| %>
 	<p><%= preview.body %></p>
+	<% if preview.url %>
+		<%= link_to "#{preview.url}", preview.url %>
+	<% end %>
 <% end %>
 
