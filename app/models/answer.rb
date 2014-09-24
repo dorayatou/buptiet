@@ -6,7 +6,4 @@ class Answer < ActiveRecord::Base
 	
   attr_accessible :student_id, :question_id, :option_id, :correct, :quiz_id, :fav_flag
 
-	def correct?
-
-	end
 end

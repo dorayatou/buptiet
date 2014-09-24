@@ -126,17 +126,10 @@ class AnswersController < ApplicationController
 				if answer_flag == 1
 						if @answer.correct?
 							@current_question.correct_num_plus
-								if @next_question_id
-					  				format.html { redirect_to show_question_answer_path(@exercise, @next_question_id) }
-					  		else
-					  				format.html { redirect_to show_question_answer_path(@exercise, @current_question_id) }
-					  		end
 						end
-				else
 						format.html { redirect_to show_question_answer_path(@exercise, @current_question.id), :notice => "answer fail" }
 				end
 			end
-		# end
 	end
 
 	def student_protect
