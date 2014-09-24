@@ -22,6 +22,9 @@ class Question < ActiveRecord::Base
 		self.total_num += 1
 	end
 
+	def 
+	end
+
 	def question_list
 		Question.where('quiz_id = ?', self.quiz_id).map(&:id)
 	end

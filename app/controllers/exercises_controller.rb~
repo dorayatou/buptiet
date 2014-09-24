@@ -15,6 +15,9 @@ class ExercisesController < ApplicationController
 		@exercise = Quiz.find(params[:exercise_id])
 		@number = @exercise.quiz_question_number
 		@question_id = @exercise.quiz_first_question
+		
+#		@questions = @exercise.questions
+#		@question = @questions.first
 
 		respond_to do |format|
 			if @question_id

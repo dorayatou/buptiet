@@ -32,9 +32,11 @@
           <% end %>
         </ul>
 
+        <!-- <ul class="pageitem">
           <li class="button">
               <%= submit_tag "确定", "type" => "submit" %>
           </li>
+        </ul> -->
       <% end %>
 
     <% else %>
