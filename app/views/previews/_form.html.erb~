@@ -1,10 +1,16 @@
 <%= form_for(@preview, :url => { :action => "create" }) do |f| %>
  
-<span class="graytitle">ID:</span>
+ <span class="graytitle">预习内容:</span>
   <ul class="pageitem">
-    <li class="bigfield">
-		<%= f.text_area :body, :size => "60x12" %>
+    <li class="textbox">
+      <%= f.text_area :body, :size => "60x12", "placeholder" => "Content", "type" => "text"%>
     </li>
+	</ul>
+	<span class="graytigle">如果您需要提供材料链接，请输入链接的地址：</span>
+	<ul class="pageitem">
+		<li class="bigfield">
+    	<%= f.text_field :url, "placeholder" => "请输入您要添加的地址", "type" => "text" %>
+		</li>
   </ul>
 
   <ul class="pageitem">

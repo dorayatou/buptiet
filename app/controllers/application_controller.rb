@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
     #   return 4
     end
   end
+
+
+	def current_student
+		Student.find(session[:student_id])
+	end
   
 
 end

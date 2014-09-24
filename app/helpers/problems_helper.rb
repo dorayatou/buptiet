@@ -10,4 +10,13 @@ module ProblemsHelper
 		 Preview.where('course_id = ?', current_course.id).present?
 	end
 
+  def asked?(problem_id)
+		student = Student.find(session[:student_id])
+    ProblemStudent.where('student_id = ? and problem_id = ?', student.id, problem_id).present?
+  end
+
+	def answered?(problem_id)
+		AnswerStudentList.where('student_id = ? and problem_id = ?', session[:student_id], problem_id).present?
+	end
+
 end

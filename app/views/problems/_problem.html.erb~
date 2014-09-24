@@ -8,7 +8,7 @@
   <% end %>
 	
   <span class="graytitle">问题墙</span>
-  <% @student_problems.each do |problem| %>
+  <% @problems.each do |problem| %>
     <ul class="pageitem">
       <li class="store" style="height:80px">
         <span class="comment"><%= problem.student.student_info.name %> : </span>   
@@ -16,17 +16,29 @@
 				<span class="image"><%= image_tag("default_face.png") %></span>
 			</li>
 		</ul>
-		<% if student? %>
-			<%= button_to "我也要问",problem_zan_problems_path(problem.id), method: :get %><%= button_to "我来回答", add_student_to_list_path(problem.id), method: :get %>
+	<div>
+		<% if asked?(problem.id) %>
+			<button disabled="true"> 我也要问 </button>
+		<% else %>
+			<%= button_to "我也要问",problem_zan_problems_path(problem.id), method: :get %>
 		<% end %>
 
+		<% if answered?(problem.id) %>
+			<button disabled="true">我来回答</button>
+		<% else %>
+			<%= button_to "我来回答", add_student_to_list_path(problem.id), method: :get %>
+		<% end %>
+	</div>
+	<div>
 		<% if problem.problem_students(problem.id).present? %>
-			可以回答该问题的同学：
+				可以回答该问题的同学：
 			<% problem.problem_students(problem.id).each do |s| %>
-					<%= s %>
+				<%= s %>
 			<% end %>
 		<% end %>
+	</div>
 
 	<% end %>
+
 
 </div>
