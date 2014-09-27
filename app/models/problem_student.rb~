@@ -1,7 +1,0 @@
-class ProblemStudent < ActiveRecord::Base
-   attr_accessible :problem_id, :student_id
-
-	 def asked?
-     ProblemStudent.where('student_id = ? and problem_id = ?', session[:student_id], @problem.id).present?
-	 end
-end
