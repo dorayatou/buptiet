@@ -3,4 +3,6 @@ class Analyse < ActiveRecord::Base
 	belongs_to :question
 
 	attr_accessible :question_id, :body, :detail
+	
+	
 end
