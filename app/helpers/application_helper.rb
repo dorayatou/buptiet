@@ -1,25 +1,4 @@
 module ApplicationHelper
-	def admin_logged_in?
-		session[:admin_id]
-	end
-
-	def teacher_logged_in?
-		session[:teacher_id]
-	end
-
-	def student_logged_in?
-		session[:student_id]
-	end
-
-
-  def current_course
-		current_course ||= Course.find(session[:course_id])
-	end
-
-	def current_student
-		Student.where('id = ?', session[:student_id])
-	end
-
 	def student?
     Student.where('id = ?', session[:student_id]).present?		
 	end

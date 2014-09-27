@@ -19,6 +19,18 @@ class ApplicationController < ActionController::Base
 	def current_student
 		Student.find(session[:student_id])
 	end
+
+	def current_teacher
+		Teacher.find(session[:teacher_id])
+	end
+
+	def current_course
+		begin
+			Course.find(session[:course_id])
+		rescue ActiveRecord::RecordNotFound
+			nil
+		end
+	end
   
 
 end

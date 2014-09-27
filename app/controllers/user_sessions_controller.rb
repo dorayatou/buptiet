@@ -16,23 +16,21 @@ class UserSessionsController < ApplicationController
         session[:student_id] = student.id
         redirect_to students_path
       else
-        redirect_to buptiet_path, :notice => "invalid" 
+        redirect_to login_path, :notice => "invalid" 
       end
   end
 
   def logout
-    if admin_logged_in?
+    if admin?
         session[:admin_id] = nil
-        redirect_to logout_path, :alert => "logout" 
-    elsif student_logged_in?
+    elsif student?
         session[:course_id] = nil
         session[:student_id] = nil
-        redirect_to logout_path, :alert => "logout" 
-    elsif teacher_logged_in?
+    elsif teacher?
         session[:course_id] = nil
         session[:teacher_id] = nil
-        redirect_to logout_path, :alert => "logout" 
-    end   
+    end
+ 		redirect_to login_path, :notice => "logout"		
   end
 
   # 精细辨认登陆与登出方法
@@ -74,5 +72,19 @@ class UserSessionsController < ApplicationController
       render(:text => 'Login error')
     end
   end
+
+	private
+	
+	def admin?
+		session[:admin_id].present?
+	end
+
+	def student?
+		session[:student_id].present?
+	end
+
+	def teacher?
+		session[:student_id].present?
+	end
 
 end

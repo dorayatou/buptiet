@@ -132,14 +132,15 @@ Buptiet::Application.routes.draw do
       get 'room/index_teacher' => 'problems#index_teacher', :as => "index_teacher"
       get 'room/index_student' => 'problems#index_student', :as => "index_student"
       get 'room/problem_zan/:problem_id' => 'problems#problem_zan', as: 'problem_zan'
+			get 'room/problems/:problem_id' => 'problems#destroy', as: 'delete_problem'
 	 	end
   end
   
   #users sessions
   controller :user_sessions do
-    get 'buptiet' => :new
-    post 'buptiet' => :login
-    get 'logout' => :logout
+    get '' => :new, as: 'login'
+    post '' => :login
+    get 'logout' => 'user_sessions#logout'
     delete 'logout' => :logout
   end
  
