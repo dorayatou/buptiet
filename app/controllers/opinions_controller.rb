@@ -2,10 +2,6 @@ class OpinionsController < ApplicationController
 	def new
 		@opinion = Opinion.new
 		@topic = Topic.find_by_id(params[:topic_id])
-
-		respond_to do |format|
-      		format.html
-    	end
 	end
 
 	def create

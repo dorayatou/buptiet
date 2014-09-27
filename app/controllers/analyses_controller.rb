@@ -14,7 +14,7 @@ class AnalysesController < ApplicationController
 	end
 
 	def index
-		@current_course = Course.find(params[:course_id])
+		@current_course = current_course
 		@current_quiz = Quiz.find(params[:quiz_id])
 		@questions = Question.where("quiz_id = ?", @current_quiz)
 		if @questions.empty?
