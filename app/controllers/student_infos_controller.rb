@@ -24,11 +24,4 @@ class StudentInfosController < ApplicationController
     	end
  	 end
 
-     def student_protect
-         if session[:student_id].nil?
-            redirect_to buptiet_url, :notice => "Login"
-             return false
-         end
-     end
-  
 end

@@ -138,9 +138,9 @@ Buptiet::Application.routes.draw do
   
   #users sessions
   controller :user_sessions do
-    get 'buptiet' => :new
-    post 'buptiet' => :login
-    get 'logout' => :logout
+    get '' => :new, as: 'login'
+    post '' => :login
+    get 'logout' => 'user_sessions#logout'
     delete 'logout' => :logout
   end
  
