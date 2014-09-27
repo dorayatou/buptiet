@@ -1,9 +1,6 @@
 class AdminsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :admin_protect
-	
 	def index
-		@admin = Admin.find(session[:admin_id])
+	  @admin = current_admin
 	end
 
 	def show
@@ -11,33 +8,34 @@ class AdminsController < ApplicationController
 	end
 
 	def show_all_admins
-		@admin = Admin.find(session[:admin_id])
-    	@admins = Admin.order(:identifier)
+	  @admin = current_admin
+    @admins = Admin.order(:identifier)
 	end
 
 	def show_all_users
-		@admin = Admin.find(session[:admin_id])
+	  @admin = current_admin
 		@teachers = Teacher.order(:identifier)
 		@students = Student.order(:identifier)
 	end
 
 	def show_all_courses
-		@admin = Admin.find(session[:admin_id])
+	  @admin = current_admin
+		@teachers = Teacher.order(:identifier)
 		@courses = Course.order(:identifier)
 	end
 
 	def show_all_quizzes
-		@admin = Admin.find(session[:admin_id])
+		@admin = current_admin 
 		@courses = Course.order(:identifier)
 	end
 
 	def show_course_times
-		@admin = Admin.find(session[:admin_id])
+		@admin = current_admin 
 		@courses = Course.order(:identifier)
 	end
 
 	def show_previews
-		@admin = Admin.find(session[:admin_id])
+		@admin = current_admin 
 		@courses = Course.order(:identifier)
 	end
 
@@ -56,13 +54,6 @@ class AdminsController < ApplicationController
 			else
 				format.html { render action: "new"}
 			end
-		end
-	end
-
-	def admin_protect
-		if session[:admin_id].nil?
-			redirect_to buptiet_url, :alter => "Login!"
-			return false
 		end
 	end
 

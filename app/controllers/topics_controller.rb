@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-	# before_filter :teacher_protect
 	# 教师登陆进去的投票系统的主页
 	def index
 		session[:topics_path] = "index"
@@ -72,13 +71,6 @@ class TopicsController < ApplicationController
 		respond_to do |format|
 			format.html { redirect_to topics_path }
 		end
-	end
-
-	def teacher_protect
-    	if not (session[:teacher_id])
-      		redirect_to buptiet_url, :alert => "login!"
-      		return false
-    	end
 	end
 
 end

@@ -1,7 +1,4 @@
 class FavouritesController < ApplicationController
-	include ApplicationHelper
-	# before_filter :student_protect
-	
 	# 收藏库首页
 	def index
 		@student = Student.find(session[:student_id])
@@ -205,13 +202,6 @@ class FavouritesController < ApplicationController
 		
 		respond_to do |format|
 			format.html
-		end
-	end
-
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
 		end
 	end
 

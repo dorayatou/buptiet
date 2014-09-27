@@ -1,8 +1,4 @@
 class CommentsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :teacher_protect, :only => [:index]
-	# before_filter :student_protect, :only => []
-
 	# 教师页面的评论系统
 	def index
 		@group = Group.find(params[:group_id])
@@ -21,12 +17,6 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@comment = Comment.new
 	end
-
-	# def new_student_comment
-	# 	@group = Group.find(params[:group_id])
-	# 	@post = Post.find(params[:post_id])
-	# 	@comment = Comment.new
-	# end
 
 	def create
 		@group = Group.find(params[:group_id])

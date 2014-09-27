@@ -1,8 +1,4 @@
 class CoursesController < ApplicationController
-	# include AdminHelper
-	# before_filter :admin_login, :except => "student_list"
-  # before_filter :teacher_login, :only => "student_list"
-  
   # 展示选修某门课程的所有学生
   def student_list
     @course = Course.find(params[:id])

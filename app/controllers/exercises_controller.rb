@@ -1,7 +1,4 @@
 class ExercisesController < ApplicationController
-	include ApplicationHelper
-	# before_filter :student_protect
-
 	# 学生登陆进去展示当堂课的quiz,即exercises
 	def index
 		time = Time.now.to_a
@@ -31,10 +28,4 @@ class ExercisesController < ApplicationController
 		@course_quizzes = @select_course.quizzes
 	end
 
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
-	end
 end

@@ -1,7 +1,4 @@
 class OpinionsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :teacher_protect
-
 	def new
 		@opinion = Opinion.new
 		@topic = Topic.find_by_id(params[:topic_id])
@@ -35,11 +32,4 @@ class OpinionsController < ApplicationController
 		end
 	end
 
-	def teacher_protect
-		if session[:teacher_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
-	end
-	
 end

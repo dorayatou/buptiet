@@ -1,8 +1,4 @@
 class GroupsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :teacher_protect, :except => [:student_groups]
-	# before_filter :student_protect, :only => [:student_groups]
-
 	# 教师登陆进去展示的课堂群组页面
 	def index
 		@teacher = Teacher.find(session[:teacher_id])
@@ -101,18 +97,4 @@ class GroupsController < ApplicationController
 		end
 	end
 
-	def teacher_protect
-		if session[:teacher_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
-	end
-
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
-	end
-	
 end

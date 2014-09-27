@@ -1,7 +1,4 @@
 class ErrorBanksController < ApplicationController
-	include ApplicationHelper
-	# before_filter :student_protect
-
 	def index
 		@student = Student.find(session[:student_id])
 		error_answer_ids = Answer.order(:question_id).where("student_id = ? AND correct = ?", @student.id, 'f').pluck(:question_id)
@@ -138,14 +135,6 @@ class ErrorBanksController < ApplicationController
 		
 		@select_option = Option.find(params[:option_id])
 
-	end
-
-
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
 	end
 
 end

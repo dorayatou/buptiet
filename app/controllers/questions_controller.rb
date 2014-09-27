@@ -1,15 +1,4 @@
 class QuestionsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :admin_protect, :onle => [:new, :create]
-
-	# before_filter :teacher_protect, :only => "index, show, new, create, edit, update"
-	# # 教师登陆进去的quiz页面中的所有问题
-	# def index
-	# 	@course = Course.find(params[:course_id])
-	# 	@quiz = Quiz.find(params[:quiz_id])
-	# 	@questions = @quiz.questions
-	# end
-
 	def index
 		@current_course = Course.find(params[:course_id])
 		@current_quiz = Quiz.find(params[:quiz_id])
@@ -59,25 +48,6 @@ class QuestionsController < ApplicationController
 	def edit
 		@quiz = Quiz.find_by_id(params[:quiz_id])
 		@question = Question.find(params[:id])
-	end
-
-	def update
-		
-	end
-	
-
-	# def teacher_protect
-	# 	if not (session[:teacher_id])
- #      		redirect_to buptiet_url, :alert => "login!"
- #      		return false
- #    	end
-	# end
-
-	def admin_protect
-		if session[:admin_id].nil?
-			redirect_to buptiet_url, :alter => "Login!"
-			return false
-		end
 	end
 
 end

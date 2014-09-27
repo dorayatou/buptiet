@@ -1,9 +1,4 @@
 class AnalysesController < ApplicationController
-	include ApplicationHelper
-	# before_filter :admin_protect, :only => [:new, :create, :destroy]
-	# before_filter :teacher_protect, :only => [:index]
-	# before_filter :student_protect, :except => [:index, :new, :create, :destroy]
-
 	# 精细辨认是一门课程、里面有三个测试。其中图形操作课程、儿童入学成熟量表也是精细辨认课程里面的的测试
 	def other_quiz_analyse
 		@select_course = Course.find(params[:course_id])
@@ -157,26 +152,5 @@ class AnalysesController < ApplicationController
 			format.html
 		end
 	end
-
-	# def admin_protect
-	# 	if session[:admin_id].nil?
-	# 		redirect_to buptiet_url, :alter => "Login!"
-	# 		return false
-	# 	end
-	# end
-
-	# def teacher_protect
-	# 	if session[:teacher_id].nil?
-	# 		redirect_to buptiet_url, :alter => "Login!"
-	# 		return false
-	# 	end
-	# end
-
-	# def student_protect
-	# 	if session[:student_id].nil?
-	# 		redirect_to buptiet_url, :alter => "Login!"
-	# 		return false
-	# 	end
-	# end
 
 end

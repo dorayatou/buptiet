@@ -1,7 +1,4 @@
 class OptionsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :admin_protect
-
 	def new
 		@option = Option.new
 		@current_course = Course.find(params[:course_id])
@@ -25,13 +22,6 @@ class OptionsController < ApplicationController
 			end
 		end
 
-	end
-
-	def admin_protect
-		if session[:admin_id].nil?
-			redirect_to buptiet_url, :alter => "Login!"
-			return false
-		end
 	end
 
 end

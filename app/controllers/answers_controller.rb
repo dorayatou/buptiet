@@ -132,11 +132,4 @@ class AnswersController < ApplicationController
 			end
 	end
 
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_path, :alter => "login!"
-			return false
-		end
-	end
-
 end

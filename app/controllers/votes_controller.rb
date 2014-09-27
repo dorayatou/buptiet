@@ -1,5 +1,4 @@
 class VotesController < ApplicationController
-	# before_filter :student_protect
 	def index
 		# session[:votes_path] = "index" 
 		@latest_votes = Topic.order("created_at DESC").limit(5)
@@ -156,27 +155,5 @@ class VotesController < ApplicationController
         	format.html
     	end
   	end
-
-
-
-  	def student_protect
-    	if not (session[:student_id])
-      		redirect_to buptiet_url, :alert => "login!"
-      		return false
-    	end
-  	end
-	# def create
-	# 	@box = current_box
-	# 	opinion = Opinion.find(params[:opinion_id])
-	# 	@vote = @box.add_opinion(opinion.id)
-
-	# 	respond_to do |format|
-	# 		if @vote.save
-	# 			format.html { redirect_to @vote.box, :notice => "Vote was successfully created" }
-	# 		else
-	# 			format.html { render :action => "new" }
-	# 		end
-	# 	end
-	# end
 
 end

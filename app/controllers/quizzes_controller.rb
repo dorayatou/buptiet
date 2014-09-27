@@ -1,7 +1,4 @@
 class QuizzesController < ApplicationController
-	include ApplicationHelper
-	# before_filter :admin_protect, :except => [:teacher_quiz, :teacher_show_quiz]
-	# before_filter :teacher_protect, :only => [:teacher_quiz, :teacher_show_quiz]
 	# 教师登陆进去的quiz页面
 	def teacher_quiz
 		time = Time.now.to_a
@@ -54,27 +51,6 @@ class QuizzesController < ApplicationController
 			else
 				format.html { render :action => "new" }
 			end
-		end
-	end
-
-	# def admin_protect
-	# 	if not (session[:admin_id])
- #      		redirect_to buptiet_url, :alert => "login!"
- #      		return false
- #    	end
-	# end
-
-	def admin_protect
-		if session[:admin_id].nil?
-			redirect_to buptiet_url, :alter => "Login!"
-			return false
-		end
-	end
-
-	def teacher_protect
-		if session[:teacher_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
 		end
 	end
 

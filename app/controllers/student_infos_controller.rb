@@ -1,6 +1,4 @@
 class StudentInfosController < ApplicationController
-    # before_filter :student_protect
-
 	def new
 		@student_info = StudentInfo.new
 	end

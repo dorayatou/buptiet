@@ -1,8 +1,4 @@
 class PostsController < ApplicationController
-	include ApplicationHelper
-	# before_filter :teacher_protect, :only => [:index, :show]
-	# before_filter :student_protect, :only => [:student_posts, :student_show_post]
-
 	# 教师页面群组消息系统
 	def index
 		@group = Group.find(params[:group_id])
@@ -90,20 +86,6 @@ class PostsController < ApplicationController
 				else session[:student_id]
 					format.html { redirect_to student_posts_path(@group), :notice => "success" }
 				end
-		end
-	end
-
-	def teacher_protect
-		if session[:teacher_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
-		end
-	end
-
-	def student_protect
-		if session[:student_id].nil?
-			redirect_to buptiet_url, :notice => "Login"
-			return false
 		end
 	end
 
