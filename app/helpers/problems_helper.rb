@@ -19,4 +19,11 @@ module ProblemsHelper
 		AnswerStudentList.where('student_id = ? and problem_id = ?', session[:student_id], problem_id).present?
 	end
 
+	def student?
+    Student.where('id = ?', session[:student_id]).present?		
+	end
+
+	def teacher?
+		Teacher.where('id = ?', session[:teacher_id]).present?
+	end
 end

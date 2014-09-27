@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+	protect_from_forgery
   
   def time_to_period(time)
     time_array = time.to_a

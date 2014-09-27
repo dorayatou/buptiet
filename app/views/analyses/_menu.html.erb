@@ -1,0 +1,15 @@
+<div id="topbar">
+  <div id="title">试题分析</div>
+  <div id="leftnav">
+    <%= link_to '返回', exercises_path %>
+    <% if @pre_question_id %>
+      <%= link_to '上一题', show_analyse_path(@exercise.id, @pre_question_id) %>
+    <% end %>
+  </div>
+  <div id="rightnav">
+      <%= link_to '完成', answers_path(@exercise) %>
+      <% if @next_question_id %>
+        <%= link_to '下一题', show_analyse_path(@exercise, @next_question_id) %>
+      <% end %>
+  </div>
+</div>

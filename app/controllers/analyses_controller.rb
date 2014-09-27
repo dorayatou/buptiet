@@ -27,7 +27,7 @@ class AnalysesController < ApplicationController
 	end
 
 	def new
-		@current_course = Course.find(params[:course_id])
+		@current_course = current_course
 		@current_quiz = Quiz.find(params[:quiz_id])
 		@question = Question.find(params[:question_id])
 		@analyse = Analyse.new
@@ -62,11 +62,10 @@ class AnalysesController < ApplicationController
 	end
 
 	def show_analyse
-		@student = Student.find(session[:student_id])
+		@student = current_student
 		@exercise = Quiz.find(params[:exercise_id])
 		@current_question = Question.find(params[:question_id])
 		@options = @current_question.options
-
 		@analyse = Analyse.find_by_question_id(@current_question.id)
 		@option_all_tags = ["A", "B", "C", "D", "E", "F"]
 
@@ -74,32 +73,10 @@ class AnalysesController < ApplicationController
 		@check_answer = Answer.find_by_student_id_and_quiz_id_and_question_id(@student.id, @exercise.id, @current_question.id)
 		
 		# 检查该题目是否收藏
-		# @check_fav = Favourite.find_by_question_id(@current_question.id)
 		@check_fav = Answer.find_by_student_id_and_question_id_and_fav_flag(@student.id, @current_question.id, 't')
 
-		# 上下题设计
-		@questions = @exercise.questions
-		@first_question = @questions.first
-		first_question_id = @first_question.id
-		@last_question = @questions.last
-		last_question_id = @last_question.id
-		current_question_id = @current_question.id
-
-		# 上一题
-		if current_question_id > first_question_id
-			pre_question_id = current_question_id - 1
-			@pre_question = Question.find(pre_question_id)
-		end
-		# 下一题
-		if current_question_id < last_question_id
-			next_question_id = current_question_id + 1
-			@next_question = Question.find(next_question_id)
-		end
-
-		respond_to do |format|
-			format.html
-		end
-
+		@pre_question_id = @current_question.pre_question_id
+		@next_question_id = @current_question.pre_question_id
 	end
 
 	def show_wrong_question_analyse

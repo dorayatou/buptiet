@@ -1,43 +1,14 @@
 class AnswersController < ApplicationController
-	# before_filter :student_protect
-
 	def index
-		@student = Student.find(session[:student_id])
+		@student = current_student
 		@exercise = Quiz.find(params[:exercise_id])
-		@questions = @exercise.questions
-		@question = @questions.first
-
-		# 判断答案是否正确
-		@answers = Answer.order("id").where("student_id = ? AND quiz_id = ?", @student.id, @exercise.id)
-		@correct_answers = Answer.order("id").where("student_id = ? AND quiz_id = ? and correct = ?", @student.id, @exercise.id, 't')
-		
-		# 错题分析第一题
-		wrong_answers_question_ids = Answer.order("question_id").where("student_id = ? AND quiz_id = ? and correct = ?", @student.id, @exercise.id, 'f').pluck(:question_id)
-		if wrong_answers_question_ids.size == 0
-			@wrong_question = nil
-			@notice = "no error questions"
-		else
-			@wrong_question = Question.find(wrong_answers_question_ids[0])
-		end
-		
-		
-		# 测试时间设计
-
-    	first_answer = @answers.first
-    	first_answer_time = first_answer.created_at.to_a
-    	first_answer_time_min = first_answer_time[1]
-    	first_answer_time_hour = first_answer_time[2]
-    	last_answer = @answers.last 
-    	last_answer_time = last_answer.created_at.to_a
-    	last_answer_time_min = last_answer_time[1]
-    	last_answer_time_hour = last_answer_time[2]
-
-    	if last_answer_time_hour == first_answer_time_hour
-    		@test_time = last_answer_time_min - first_answer_time_min + 1
-    	elsif last_answer_time_hour == first_answer_time_hour + 1
-    		@test_time = last_answer_time_min - first_answer_time_min + 60
-    	end
-
+		question_ids = Question.question_list(params[:exercise_id])
+		@question = Question.find(question_ids[0])
+		@answers = Answer.number(@student.id, params[:exercise_id])
+		@correct_num = Answer.correct_num(@student.id, params[:exercise_id])
+		wrong_answers_question_ids = Answer.wrong_question_list(@student.id, params[:exercise_id])
+		@wrong_question_id ||= wrong_answers_question_ids[0]
+		@test_time = 12	
 	end
 
 	def answer_results

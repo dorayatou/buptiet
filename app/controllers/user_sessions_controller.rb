@@ -1,6 +1,5 @@
 #coding： utf-8
 class UserSessionsController < ApplicationController
-  include ApplicationHelper
   def login
       admin = Admin.authenticate(params[:identifier], params[:password])
       student = Student.authenticate(params[:identifier], params[:password])
@@ -21,12 +20,12 @@ class UserSessionsController < ApplicationController
   end
 
   def logout
-    if admin?
+    if admin_login?
         session[:admin_id] = nil
-    elsif student?
+    elsif student_login?
         session[:course_id] = nil
         session[:student_id] = nil
-    elsif teacher?
+    elsif teacher_login?
         session[:course_id] = nil
         session[:teacher_id] = nil
     end
@@ -75,16 +74,16 @@ class UserSessionsController < ApplicationController
 
 	private
 	
-	def admin?
+	def admin_login?
 		session[:admin_id].present?
 	end
 
-	def student?
+	def student_login?
 		session[:student_id].present?
 	end
 
-	def teacher?
-		session[:student_id].present?
+	def teacher_login?
+		session[:teacher_id].present?
 	end
 
 end

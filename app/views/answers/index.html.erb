@@ -6,10 +6,10 @@
   </div>
 </div>
 
-<% if @wrong_question %>
+<% if @wrong_question_id %>
   <div id="duobutton">
     <div class="links">
-      <%= link_to "试题分析", show_analyse_path(@exercise.id, @question.id) %><%= link_to "错题分析", show_wrong_question_analyse_path(@exercise, @wrong_question.id) %>
+      <%= link_to "试题分析", show_analyse_path(@exercise.id, @question.id) %><%= link_to "错题分析", show_wrong_question_analyse_path(@exercise, @wrong_question_id) %>
     </div>
   </div>
 <% else %>
@@ -20,19 +20,17 @@
   </div>
 <% end %>
 
-
 <div id="content">
-
   <span class="graytitle">测试结果</span>
   <ul class="pageitem">
       <p style="margin:10px 25% 10px 5%;">
         <span class="graytitle">耗时: <%= @test_time %> 分钟</span>
       </p>
       <p style="margin:10px 25% 10px 5%;">
-        <span class="graytitle">回答题目: <%= @answers.count %> 道</span>
+        <span class="graytitle">回答题目: <%= @answers %> 道</span>
       </p>
       <p style="margin:10px 25% 10px 5%;">
-        <span class="graytitle">答对数目： <%= @correct_answers.count %> 道</span>
+        <span class="graytitle">答对数目： <%= @correct_num %> 道</span>
       </p>
   </ul>
 

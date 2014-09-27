@@ -10,6 +10,10 @@ class Question < ActiveRecord::Base
 	
   attr_accessible :quiz_id, :question_type, :body, :total_num, :correct_num, :fav_flag
 
+	def self.question_list(quiz_id)
+		where('quiz_id = ?', quiz_id).map(&:id)
+	end
+
 	def correct
 		Option.where('question_id = ? and correct = ?', self.id, true).pluck(:id)[0]
 	end

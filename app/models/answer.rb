@@ -6,12 +6,24 @@ class Answer < ActiveRecord::Base
 	
   attr_accessible :student_id, :question_id, :option_id, :correct, :quiz_id, :fav_flag
 	
-	def correct?(student_id, question_id, correct)
-		where('student_id = ? and question_id = ? and correct = ?', student_id, question_id, correct)
+	def self.correct?(student_id, question_id, correct)
+		where('student_id = ? and question_id = ? and correct = ?', student_id, question_id, correct).present?
 	end
 
-	def fav?(student_id, question_id, fav_flag)
+	def self.fav?(student_id, question_id, fav_flag)
 		where('student_id = ? and question_id = ? and fav_flag = ?', student_id, question_id, 't').present?
+	end
+
+	def self.number(student_id, quiz_id)
+		where('student_id = ? and question_id =?', student_id, quiz_id).size 
+	end
+
+	def self.correct_num(student_id, quiz_id)
+		where('student_id = ? and quiz_id = ? and correct = ?', student_id, quiz_id, 't').size
+	end
+
+	def self.wrong_question_list(student_id, quiz_id)
+		where('student_id = ? and quiz_id = ? and correct = ?', student_id, quiz_id, 'f').map(&:question_id)
 	end
 
 end

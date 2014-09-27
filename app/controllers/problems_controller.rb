@@ -5,8 +5,8 @@ class ProblemsController < ApplicationController
 	end
 	# 教师登陆进去的问题墙
 	def index_teacher
-		@teacher = Teacher.find(session[:teacher_id])
-		@current_course = Course.find(session[:course_id])
+		@teacher = current_teacher 
+		@current_course = current_course 
 		@problems = Problem.order("updated_at DESC").limit(5)
 	end
 
