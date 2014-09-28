@@ -290,12 +290,15 @@ get '/selects/:course_id/student_list' => 'selects#student_list', :as => "studen
 
  # 课表管理（管理员权限）
 	get 'courses/:course_id/student_previews' => 'previews#student_previews', :as => 'student_previews'
+	get 'courses/:course_id/teacher_previews' => 'previews#teacher_previews', :as => 'teacher_previews'
+#	put 'courses/:course_id/previews' => 'previews#index'
   resources :courses do
 		
     resources :course_times do
     end
 		resources :previews do
 		end
+
   end
 
 

@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+	def current_admin
+		Admin.find(session[:admin_id])
+	end
 
 	def current_student
 		Student.find(session[:student_id])

@@ -1,7 +1,9 @@
 class ProblemsController < ApplicationController
+	#layout "problem", only: [:index_student, :index_teacher]
 	# 学生登陆进去的问题墙
 	def index_student
 		@problems = Problem.order("updated_at DESC")
+		@current_course = current_course
 	end
 	# 教师登陆进去的问题墙
 	def index_teacher

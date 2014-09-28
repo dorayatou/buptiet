@@ -5,9 +5,17 @@
 	</div>
 	
 </div>
+<table>
+	<% if @previews.present? %>
+		<% @previews.each do |pre| %>
+			<tr>
+				<td><%= sanitize(pre.body) %></td>
+				<td><%= link_to '编辑', edit_course_preview_path(@course.id, pre.id) %></td>
+				<td><%= link_to '删除',course_preview_path(@course.id, pre.id), method: :delete %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
 
-<% @previews.each do |pre| %>
-	<p><%= pre.body %></p>
-<% end %>
+<h1 style="float:right;position:relative;right:20px;text-decoration: underline;"><%= link_to '新添', new_course_preview_path(@course.id) %></h1>
 
-<h1 style="float:right;position:relative;right:20px;text-decoration: underline;"><%= link_to '新添', new_course_preview_path(@course.id) %></h1

@@ -2,7 +2,7 @@
   <% if have_preview? %>
   	<div id="tributton">
   		<div class="links">
-    		<%= link_to "课前测试", exercises_path %><%= link_to "投票系统", votes_path %><%= link_to "预习材料", student_previews_path(current_course.id) %>
+    		<%= link_to "课前测试", exercises_path %><%= link_to "投票系统", votes_path %><%= link_to "预习材料", student_previews_path(@current_course.id) %>
  		 </div>
 		</div>
 	<% else %>
@@ -17,7 +17,7 @@
 	<% if have_preview? %>
 		<div id="tributton">
   		<div class="links">
-    		<%= link_to "课前练习", teacher_quiz_path(@teacher) %><%= link_to "投票系统", topics_path %><%= link_to "预习材料" %>
+    		<%= link_to "课前练习", teacher_quiz_path(@teacher) %><%= link_to "投票系统", topics_path %><%= link_to "预习材料", teacher_previews_path(@current_course.id) %>
   		</div>
 		</div>
 	<% else %>

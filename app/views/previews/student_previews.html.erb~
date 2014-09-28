@@ -8,9 +8,6 @@
 <%= render 'problems/menu' %>
 
 <% @previews.each do |preview| %>
-	<p><%= preview.body %></p>
-	<% if preview.url %>
-		<%= link_to "#{preview.url}", preview.url %>
-	<% end %>
+	<p><%= sanitize(preview.body) %></p>
 <% end %>
 
