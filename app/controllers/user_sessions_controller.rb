@@ -1,16 +1,18 @@
 #coding： utf-8
 class UserSessionsController < ApplicationController
   def login
-      admin = Admin.authenticate(params[:identifier], params[:password])
-      student = Student.authenticate(params[:identifier], params[:password])
-      teacher = Teacher.authenticate(params[:identifier], params[:password])
+    admin = Admin.authenticate(params[:identifier], params[:password])
+    student = Student.authenticate(params[:identifier], params[:password])
+    teacher = Teacher.authenticate(params[:identifier], params[:password])
       
       if admin
         session[:admin_id] = admin.id
         redirect_to admins_path
       elsif teacher
         session[:teacher_id] = teacher.id
-        redirect_to teachers_path
+				unless params[:return_to]
+        	redirect_to teachers_path and return
+				end
       elsif student
         session[:student_id] = student.id
         redirect_to students_path
