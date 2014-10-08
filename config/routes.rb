@@ -127,6 +127,7 @@ Buptiet::Application.routes.draw do
   end  
 
   # 问题墙
+	get 'problems_wall' => 'problems#problems_wall', as: 'problems_wall'
   resources :problems do
     collection do
       get 'room/index_teacher' => 'problems#index_teacher', :as => "index_teacher"

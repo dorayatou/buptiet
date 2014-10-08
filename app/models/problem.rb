@@ -19,5 +19,20 @@ class Problem < ActiveRecord::Base
 				return students_name
 			end
 		end
+		
+		def user
+			begin
+				student = Student.find(self.student_id)
+			rescue ActiveRecord::RecordNotFound
+				student = nil
+			end
+			
+			if student
+				student.student_info.name
+			end
+		end
 
+		def time
+			self.updated_at.to_s(:db)
+		end
 end

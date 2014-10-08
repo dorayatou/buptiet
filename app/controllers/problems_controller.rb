@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-	#layout "problem", only: [:index_student, :index_teacher]
+	layout "problem", only: [:problems_wall]
 	# 学生登陆进去的问题墙
 	def index_student
 		@problems = Problem.order("updated_at DESC")
@@ -12,11 +12,16 @@ class ProblemsController < ApplicationController
 		@problems = Problem.order("updated_at DESC").limit(5)
 	end
 
+	def problems_wall
+		@problems = Problem.order("updated_at DESC").limit(5)
+	end
+
 	#我也要问，赞数加1
 	def problem_zan
 		problem = Problem.find(params[:problem_id])
 		@problem_student = ProblemStudent.create(:problem_id => problem.id, :student_id => current_student.id)
 		problem.number += 1
+		problem.updated_at = Time.now.to_s(:db)
 		problem.save
     @student_lists = AnswerStudentList.student_lists(problem.id)
 		
@@ -34,7 +39,7 @@ class ProblemsController < ApplicationController
 		@problem.destroy
 
 		respond_to do |format|
-			format.html { redirect_to index_teacher_problems_path }
+			format.html { redirect_to problems_wall_path }
 		end
 	end
 	# 新建一个问题
@@ -45,6 +50,8 @@ class ProblemsController < ApplicationController
 	def create
 		@problem = Problem.new(params[:problem])
 		@problem.student_id = session[:student_id]
+		@problem.created_at = Time.now.to_s(:db)
+		@problem.updated_at = Time.now.to_s(:db)
     @problem.number = 1
     @problem.course_id = session[:course_id]
 		
