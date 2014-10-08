@@ -1,4 +1,6 @@
 class ProblemsController < ApplicationController
+	before_filter :teacher_login, only: :problems_wall
+
 	layout "problem", only: [:problems_wall]
 	# 学生登陆进去的问题墙
 	def index_student
