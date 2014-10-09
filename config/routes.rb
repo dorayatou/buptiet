@@ -144,7 +144,9 @@ Buptiet::Application.routes.draw do
     get 'logout' => 'user_sessions#logout'
     delete 'logout' => :logout
   end
- 
+
+	get '/problems_wall/login' => 'user_sessions#problems_wall_login', as: 'problems_wall_login'
+	post '/problems_wall/login' => 'user_sessions#problems_wall_login' 
   resources :admins do
     collection do
       get :show_all_admins

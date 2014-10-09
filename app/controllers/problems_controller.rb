@@ -1,6 +1,5 @@
 class ProblemsController < ApplicationController
-	before_filter :teacher_login, only: :problems_wall
-
+	#before_fliter :teacher_login, only : :problems_wall
 	layout "problem", only: [:problems_wall]
 	# 学生登陆进去的问题墙
 	def index_student
@@ -15,7 +14,9 @@ class ProblemsController < ApplicationController
 	end
 
 	def problems_wall
-		@problems = Problem.order("updated_at DESC").limit(5)
+		if teacher_login?
+			@problems = Problem.order("updated_at DESC").limit(5)
+		end
 	end
 
 	#我也要问，赞数加1
@@ -67,4 +68,14 @@ class ProblemsController < ApplicationController
 		end
 	end
 
+	private
+	
+	def teacher_login?
+		if session[:teacher_id]
+			return true
+		else
+			redirect_to problems_wall_login_path
+		end
+	end
+			
 end

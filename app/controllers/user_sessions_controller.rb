@@ -10,9 +10,7 @@ class UserSessionsController < ApplicationController
         redirect_to admins_path
       elsif teacher
         session[:teacher_id] = teacher.id
-				unless params[:return_to]
-        	redirect_to teachers_path and return
-				end
+        redirect_to teachers_path 
       elsif student
         session[:student_id] = student.id
         redirect_to students_path
@@ -20,6 +18,13 @@ class UserSessionsController < ApplicationController
         redirect_to login_path, :notice => "invalid" 
       end
   end
+
+	def problems_wall_login
+		teacher = Teacher.authenticate(params[:identifier], params[:password])
+		if teacher
+			session[:teacher_id] = teacher.id and redirect_to problems_wall_path
+		end
+	end
 
   def logout
     if admin_login?
