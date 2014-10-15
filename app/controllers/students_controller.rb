@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-    # 精细辨认应用——请求个人信息
+before_filter :student_login, only: :index
+	# 精细辨认应用——请求个人信息
     def get_student_info
         @student = current_student
 			  @student_info = @student.student_info

@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+	before_filter :teacher_login, only: :index
 	def index
 		@teacher = current_teacher
 		@teacher_info = @teacher.teacher_info

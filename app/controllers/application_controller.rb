@@ -21,6 +21,18 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def student_login
+		unless session[:student_id]
+			redirect_to login_path
+		end
+	end
+
+	def admin_login
+		unless session[:admin_id]
+			redirect_to login_path
+		end
+	end
+
 	def current_admin
 		Admin.find(session[:admin_id])
 	end
