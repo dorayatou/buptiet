@@ -13,7 +13,11 @@ before_filter :student_login, only: :index
         @posts = Post.order("created_at DESC").limit(5)
         @course_lists = @student.courses
         course_ids = @student.course_ids
-				session[:course_id] = CourseTime.current_course_id(course_ids)
+				if course_ids.present?
+					session[:course_id] = CourseTime.current_course_id(course_ids)
+				else
+					session[:course_id] = nil
+				end
     		@course = current_course
     end
 
@@ -22,7 +26,11 @@ before_filter :student_login, only: :index
 			  @student_info = @student.student_info
         @posts = Post.order("created_at DESC").limit(5)
         academy_id = @student_info.academy_id
-        @academy ||= Academy.find(academy_id)
+				if academy_id
+        	@academy = Academy.find(academy_id)
+				else
+					@academy = nil
+				end
     end
 
     def edit
@@ -54,7 +62,7 @@ before_filter :student_login, only: :index
 
         respond_to do |format|
             if @student.save and @student_info.save
-                format.html {  redirect_to show_all_students_admins_path,  :notice => "success" }
+							format.html {  redirect_to login_path,  :notice => "success and please login and edit student infomation" }
             else
                 format.html { render action: "new" }    
             end
