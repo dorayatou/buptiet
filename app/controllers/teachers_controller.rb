@@ -4,7 +4,11 @@ class TeachersController < ApplicationController
 		@teacher_info = @teacher.teacher_info
 		@posts = Post.order("created_at DESC").limit(5)
 		course_ids = @teacher.course_ids
-		session[:course_id] = CourseTime.current_course_id(course_ids)
+		if course_ids.present?
+			session[:course_id] = CourseTime.current_course_id(course_ids)
+		else
+			session[:course_id] = nil
+		end
 		@course = current_course	
 	end
 
@@ -32,7 +36,11 @@ class TeachersController < ApplicationController
 		@courses = @teacher.courses
 		@teacher_info = @teacher.teacher_info 
 		academy_id = @teacher_info.academy_id
-		@academy ||= Academy.find(academy_id)
+		if academy_id
+			@academy = Academy.find(academy_id)
+		else
+			@academy = nil
+		end
 	end
 
 	def new
@@ -46,7 +54,7 @@ class TeachersController < ApplicationController
 
 		respond_to do |format|
 			if @teacher.save and @teacher_info.save
-				format.html {  redirect_to show_all_teachers_admins_path,  :notice => "success" }
+				format.html {  redirect_to login_path,  :notice => "success and login and edit teacher infomation" }
 			else
 				format.html { render action: "new" }
 			end
