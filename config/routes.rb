@@ -1,4 +1,5 @@
 Buptiet::Application.routes.draw do
+  resources :help_documents
   get 'add_student_to_list/:problem_id' => 'answer_student_lists#add_student_to_list', as: 'add_student_to_list'
   
  	# 开放信息路由文件
