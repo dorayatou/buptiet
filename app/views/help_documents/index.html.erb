@@ -1,0 +1,17 @@
+<div id="topbar">
+  <div id="title">泛在学习</div>
+  <div id="leftnav">
+  	<% if student? %>
+    	<%= link_to '返回', students_path, method: :get %>
+    <% elsif teacher? %>
+    	<%= link_to '返回', teachers_path, method: :get %>
+    <% else %>
+      <%= link_to '返回', logout_path, method: :delete %>
+    <% end %>
+  </div>
+</div>
+<div id="content">
+	<h1>帮助文档</h1>
+	<p>具体帮助</p>
+</div>
+
