@@ -1,0 +1,26 @@
+<div id="topbar">
+  <div id="title">课堂抢答</div>
+  <div id="leftnav">
+    <%= link_to "返回", teachers_path %>
+  </div>
+</div>
+
+<div id="content">
+  <% if not @quizzes.empty? %>
+  <span class="graytitle">练习列表</span>
+  <ul class="pageitem">
+    <% @quizzes.each do |quiz| %>
+      <li class="menu">
+        <span class="name"><%= quiz.name %></span>
+        <span>
+          <%= link_to "", open_question_path(quiz, quiz.quiz_first_question) %>
+        </span>
+        <span class="arrow"></span>
+      </li>
+    <% end %>
+  </ul>
+  <% else %>
+    <span class="graytitle">当前没有练习</span>
+  <% end %>
+
+</div>

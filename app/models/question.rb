@@ -14,6 +14,10 @@ class Question < ActiveRecord::Base
 		where('quiz_id = ?', quiz_id).map(&:id)
 	end
 
+	def option_tags
+		Option.where('question_id = ?', self.id).map(&:id)
+	end
+
 	def correct
 		Option.where('question_id = ? and correct = ?', self.id, true).pluck(:id)[0]
 	end

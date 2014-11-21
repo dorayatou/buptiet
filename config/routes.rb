@@ -1,5 +1,10 @@
 Buptiet::Application.routes.draw do
   resources :help_documents
+	get 'open_info_api/quizzes' => 'quizzes#open_quizzes', as: 'open_quizzes'
+	get 'open_info_api/quizzes/:quiz_id/questions/:question_id' => 'questions#open_question', as: 'open_question'
+	post 'open_info_api/quizzes/question/answers' => 'open_api_answers#open_question_answer'
+	get 'open_info_api/quizzes/:quiz_id/answers' => 'open_api_answers#open_answers', as: 'open_answers'
+
   get 'add_student_to_list/:problem_id' => 'answer_student_lists#add_student_to_list', as: 'add_student_to_list'
   
  	# 开放信息路由文件

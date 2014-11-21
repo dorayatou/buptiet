@@ -1,0 +1,14 @@
+<div id="topbar">
+	<div id="title">《<%= @current_quiz.name %>》测试结果</div>
+	<div id="leftnav">
+    	<%= link_to '返回', open_quizzes_path %>
+    </div>
+</div>
+<table>
+	<% @questions.each do |question| %>
+	<tr>
+		<th><%= question.body %></th>
+		<th>正确率：<%= correct_rate(question.id) %></th>
+	</tr>
+<% end %>
+</table>

@@ -15,6 +15,10 @@ class QuizzesController < ApplicationController
 		@questions = Question.find_all_by_quiz_id(@current_quiz.id)
 		@option_all_tags = ["A", "B", "C", "D", "E", "F"]
 	end
+	#吴振宇
+	def open_quizzes
+		@quizzes = Quiz.where("course_id = ?", session[:course_id])
+	end
 
 	# 学生登陆进去的其他课程的quiz列表
 	def student_other_test

@@ -1,0 +1,19 @@
+<div id="topbar">
+  <div id="title">课堂练习</div>
+  
+  <div id="leftnav">
+    <%= link_to '返回', open_quizzes_path %>
+    <% if @pre_question_id %>
+      <%= link_to '上一题', open_question_path(@current_quiz, @pre_question_id) %>
+    <% end %>
+  </div>
+
+  <div id="rightnav">
+    <% if @next_question_id %>
+      <%= link_to '下一题', open_question_path(@current_quiz, @next_question_id) %>
+    <% else %>
+      <%= link_to '完成', open_answers_path(@current_quiz) %>
+    <% end %>
+  </div>
+
+</div>
