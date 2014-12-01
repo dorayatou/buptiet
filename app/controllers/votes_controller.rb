@@ -149,8 +149,8 @@ class VotesController < ApplicationController
     			count_flag = count_flag - 1
     		end
     	end
-    	@vote_results = "http://chart.apis.google.com/chart?chs=300x190&chtt=total:#{@total_votes}&chts=0000FF,20&chd=#{@vote_results}&cht=p3&chxt=x,y&chxl=0:|A|B|C|D|E|F|1:|0|1|2|3|4|5|6|7|8|9|10"  
-  		
+
+    	# @vote_results = "http://chart.apis.google.com/chart?chs=300x190&chtt=total:#{@total_votes}&chts=0000FF,20&chd=#{@vote_results}&cht=p3&chxt=x,y&chxl=0:|A|B|C|D|E|F|1:|0|1|2|3|4|5|6|7|8|9|10"  
   		respond_to do |format|
         	format.html
     	end

@@ -1,4 +1,5 @@
 Buptiet::Application.routes.draw do
+  get 'test' => 'open_api_answers#test'
   resources :help_documents
 	get 'open_info_api/quizzes' => 'quizzes#open_quizzes', as: 'open_quizzes'
 	get 'open_info_api/quizzes/:quiz_id/questions/:question_id' => 'questions#open_question', as: 'open_question'

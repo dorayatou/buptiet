@@ -1,7 +1,7 @@
 <%= render 'menu' %>
 <div id="content">
     <% if @check_answer %>
-      <%= form_tag({:controller => "answers", :action => "answer_question"}) do %>
+      <%= form_tag({:controller => "answers", :action => "open_question_answer"}) do %>
         <span class="graytitle">问题:</span>
         <ul class="pageitem">
           <li class="textbox">

@@ -295,7 +295,7 @@ ActiveRecord::Schema.define(:version => 20141121120421) do
     t.integer  "student_id"
     t.integer  "quiz_id"
     t.integer  "question_id"
-    t.integer  "option_id"
+    t.string   "option_id"
     t.boolean  "correct"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

@@ -1,5 +1,5 @@
 <div id="topbar">
-  <div id="title">投票系统</div>
+  <div id="title">投票系统<%= @topic %></div>
   <div id="leftnav">
     <%= link_to '返回', votes_path %>
   </div>
@@ -50,9 +50,10 @@
   <% else %>
     <hr style="border:1px #000000;" />
     <span class="graytitle">投票结果：</span>
-    <div class = "image_center">
-      <img src="<%= @vote_results %>" alt="投票结果" />
-    </div>
+    <!-- <div class = "image_center">
+      <!-- <img src="<%= @vote_results %>" alt="投票结果" /> -->
+    
+    <%= render 'vote_result' %>
     <br/>
     <span class="graytitle">选项</span>
     <% j = 0 %>
@@ -84,3 +85,7 @@
   <% end %>
   
 </div>
+
+
+
+<%= @b %>

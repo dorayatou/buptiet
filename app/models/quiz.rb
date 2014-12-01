@@ -16,6 +16,10 @@ class Quiz < ActiveRecord::Base
 		Question.where('quiz_id = ?', self.id).map(&:id)
 	end
 
+	def quiz_question_list_num
+		questions.map(&:id)
+	end
+
 	def quiz_question_number
 		quiz_question_list.size
 	end

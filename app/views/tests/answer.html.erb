@@ -1,0 +1,18 @@
+<%= form_tag({:controller => "open_api_answers", :action => "open_question_answers"}) do %>
+		<span class="graytitle">学生ID:</span>
+		<ul class="pageitem">
+			<li class="bigfield">
+				<%= text_field_tag :student_id, params[:student_id] %>
+			</li>
+		</ul>
+		<span class="graytitle">答案:</span>
+		<ul class="pageitem">
+			<li class="bigfield">
+				<%= password_field_tag :answer_id, params[:answer_id] %>
+			</li>
+		</ul>
+
+		<ul class="pageitem">
+			<li class="button"><%= submit_tag "登陆", "type" => "submit" %></li>
+		</ul>
+ <% end %>

@@ -22,6 +22,24 @@ class Question < ActiveRecord::Base
 		Option.where('question_id = ? and correct = ?', self.id, true).pluck(:id)[0]
 	end
 
+	def correct_option
+		array = self.option_tags
+		array.each_with_index do |option_id, index|
+			if self.correct == option_id
+				case index
+				when 0
+					return 'A'
+				when 1 then
+					return 'B'
+				when 2 then
+					return 'C'
+				when 3 then
+					return 'D'		
+				end
+			end
+		end
+	end
+
 	def total_num_plus
 		self.total_num += 1
 	end

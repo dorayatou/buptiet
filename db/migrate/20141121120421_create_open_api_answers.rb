@@ -4,7 +4,7 @@ class CreateOpenApiAnswers < ActiveRecord::Migration
 			t.integer :student_id
       t.integer :quiz_id
   		t.integer :question_id
-  		t.integer :option_id
+  		t.string :option_id
 			t.boolean :correct
 
       t.timestamps
