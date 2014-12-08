@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141121120421) do
+ActiveRecord::Schema.define(:version => 20141208095539) do
 
   create_table "academies", :force => true do |t|
     t.string   "identifier"
@@ -297,6 +297,13 @@ ActiveRecord::Schema.define(:version => 20141121120421) do
     t.integer  "question_id"
     t.string   "option_id"
     t.boolean  "correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "open_current_questions", :force => true do |t|
+    t.integer  "quiz_id"
+    t.integer  "question_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -16,15 +16,21 @@ class QuestionsController < ApplicationController
 
 	def open_question
 		@current_quiz = Quiz.find(params[:quiz_id])
-		unless session[:current_quiz] == @current_quiz.id
-			session[:current_quiz] = @current_quiz.id
-		end
+		#unless session[:current_quiz] == @current_quiz.id
+		#	session[:current_quiz] = @current_quiz.id
+		#end
 		@current_question = Question.find(params[:question_id])
-		unless session[:current_question] == @current_question.id
-			session[:current_question] = @current_question.id
-		end
+		#unless session[:current_question] == @current_question.id
+		#	session[:current_question] = @current_question.id
+		#end
 		@options = @current_question.options
 		@option_all_tags = ['A','B', 'C', 'D', 'E', 'F']
+
+		#处理跨域请求
+		@current_session  =  OpenCurrentQuestion.new
+		@current_session.quiz_id = @current_quiz.id
+		@current_session.question_id  =  @current_question.id
+		@current_session.save
 
 		@pre_question_id = @current_question.pre_question_id
 		@next_question_id = @current_question.next_question_id
