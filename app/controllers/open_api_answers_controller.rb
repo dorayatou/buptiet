@@ -1,5 +1,6 @@
 class OpenApiAnswersController < ApplicationController
 	def open_question_answer
+		render(:text => "fail") and return if params[:student_id].blank? || params[:answer_id].blank?
 		@answer = OpenApiAnswer.new
 		@current_session  =  OpenCurrentQuestion.last
 		@answer.quiz_id  =  @current_session.quiz_id
@@ -19,8 +20,6 @@ class OpenApiAnswersController < ApplicationController
 		
 		if @answer.save
 			render(:text => "success")
-		else
-			render(:text => "fail")
 		end
 	end
 
